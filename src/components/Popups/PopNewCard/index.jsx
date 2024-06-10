@@ -1,6 +1,6 @@
-import { Calendar } from "../Calendar"
+import { Calendar } from "../../Calendar/index.jsx"
 
-export const popNewCard = () => {
+export const PopNewCard = () => {
     return (
 <div className="pop-new-card" id="popNewCard">
         <div className="pop-new-card__container">
