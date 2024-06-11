@@ -1,4 +1,4 @@
-export const Card = (title, topic, date) => {
+export const Card = ({title, topic, date}) => {
   const colors = {
     "Web Design": "_orange",
     "CopyWriting": "_purple",
