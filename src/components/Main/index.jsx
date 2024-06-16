@@ -1,10 +1,11 @@
 import { statusList } from "../../data.js";
+import { Container } from "../../globalStyle.styled.js";
 import { Column } from "../Column/index.jsx"
 
 export const Main = ({cards}) => {
     return(
      <main className="main">
-        <div className="container">
+        <Container>
           <div className="main__block">
             <div className="main__content">
               {statusList.map((status, i) => (
@@ -16,7 +17,7 @@ export const Main = ({cards}) => {
               ))}
               </div>
           </div>
-        </div>
+        </Container>
       </main>
     )
 }
