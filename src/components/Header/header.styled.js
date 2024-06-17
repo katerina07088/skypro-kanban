@@ -80,8 +80,8 @@ export const BtnExit = styled.button`
 `;
 export const HeaderPopUserSet = styled.div`
   &:target {
-  display: block;
-}
+    display: block;
+  }
   display: block;
   position: absolute;
   top: 61px;

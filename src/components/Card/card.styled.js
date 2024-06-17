@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { Green, Orange, Purple } from "../../globalStyle.styled";
+import { themeColor } from "../../globalStyle.styled";
 
 export const CardAnimation = keyframes`
   0% {
@@ -44,9 +44,8 @@ export const CardTheme = styled.div`
   padding: 5px 14px;
   border-radius: 18px;
 
-  ${({ $color }) => $color === "Web Design" && Orange};
-  ${({ $color }) => $color === "CopyWriting" && Purple};
-  ${({ $color }) => $color === "Research" && Green};
+
+  ${({ $color }) => themeColor($color)};
 
   p {
     font-size: 10px;

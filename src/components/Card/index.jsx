@@ -1,11 +1,6 @@
 import * as S from "./card.styled.js";
 
 export const Card = ({ title, topic, date }) => {
-  // const colors = {
-  //   "Web Design": "_orange",
-  //   "CopyWriting": "_purple",
-  //   "Research": "_green",
-  // };
   return (
     <S.CardItem>
       <S.Card>
