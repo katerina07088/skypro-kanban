@@ -7,10 +7,13 @@ import { PopBrowse } from "./components/Popups/PopBrowse";
 import { useEffect, useState } from "react";
 import { cardList } from "./data";
 import { GlobalStyle, Wrapper } from "./globalStyle.styled.js";
+import { ThemeProvider } from "styled-components";
+import { dark, light } from "./theme.js";
 
 function App() {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(false);
+  const [changeTheme, setChangeTheme] = useState("light");
 
   const addCard = () => {
     const newCard = {
@@ -31,16 +34,16 @@ function App() {
 
 
   return (
-    <>
+    <ThemeProvider theme={changeTheme === "light" ? light: dark} >
     <GlobalStyle/>
     <Wrapper>
       <PopUser />
       <PopNewCard />
       <PopBrowse />
-      <Header addCard={addCard} />
+      <Header addCard={addCard} setChangeTheme = {setChangeTheme} changeTheme={changeTheme}/>
       {isLoading ? <p className = "loader">Loading ...</p> : <Main cards={cards} />}
     </Wrapper>
-    </>
+    </ThemeProvider>
   );
 }
 

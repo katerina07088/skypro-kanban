@@ -79,6 +79,9 @@ export const BtnExit = styled.button`
   ${Hover03}
 `;
 export const HeaderPopUserSet = styled.div`
+  &:target {
+  display: block;
+}
   display: block;
   position: absolute;
   top: 61px;
@@ -187,4 +190,4 @@ export const PopUserSetTheme = styled.div`
 //   input:checked[type="checkbox"]::before {
 //     left: 12px;
 //   }
-//`;
+// `;

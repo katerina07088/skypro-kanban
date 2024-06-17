@@ -49,6 +49,30 @@ export const Container = styled.div`
   padding: 0 30px;
 `;
 
+// const colors = {
+//     "Web Design": "_orange",
+//     "CopyWriting": "_purple",
+//     "Research": "_green",
+// }
+
+
+export const Orange = css `
+background-color: #FFE4C2;
+  color: #FF6D00;
+`
+export const Green = css `
+ background-color: #B4FDD1;
+  color: #06B16E;
+`
+export const Purple = css `
+background-color: #E9D4FF;
+  color: #9A48F1;
+`
+export const Gray = css `
+ background: #94A6BE;
+  color: #FFFFFF;
+`
+
 export const Hover01 = css`
   &:hover {
     background-color: #33399b;

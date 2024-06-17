@@ -2,11 +2,15 @@ import { useState } from "react";
 import * as S from "./header.styled.js";
 import { Container } from "../../globalStyle.styled.js";
 
-export const Header = ({ addCard }) => {
+export const Header = ({ addCard, changeTheme, setChangeTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpenUser = () => {
     setIsOpen(!isOpen);
   };
+  const onChangeTheme = () => {
+   setChangeTheme (changeTheme === "light" ? "dark" : "light");
+  }
+
   return (
     <S.Header>
       <Container>
@@ -33,7 +37,7 @@ export const Header = ({ addCard }) => {
                 <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox" name="checkbox" />
+                  <input checked = {changeTheme === "dark"} onClick={onChangeTheme} type="checkbox" className="checkbox"  name="checkbox" />
                 </S.PopUserSetTheme>
                 <S.BtnExit>
                   <a href="#popExit">Выйти</a>
