@@ -7,7 +7,10 @@ grayBg: "#94A6BE",
 orangeText: "#FF6D00",
 greenText:" #06B16E",
 purpleText: "#9A48F1",
-grayText: "#FFFFFF"
+grayText: "#FFFFFF",
+backgroundCard: "#ffffff",
+titleColor: "#000000"
+
 
 
 }
@@ -20,6 +23,7 @@ grayText: "#94A6BE",
 orangeBg: "#FF6D00",
 greenBg:" #06B16E",
 purpleBg: "#9A48F1",
-grayBg: "#FFFFFF"
-
+grayBg: "#FFFFFF",
+backgroundCard: "#20202C",
+titleColor:  "#FFFFFF"
 }

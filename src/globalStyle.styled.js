@@ -66,6 +66,13 @@ export const Gray = css`
   color: ${({ theme }) => theme.greyText};
 `;
 
+export const BackgroundColor= css `
+background-color: ${({theme}) => theme.backgroundCard};
+`;
+
+export const CardTitleColor = css `
+color:${({theme}) => theme.titleColor}
+`
 export const themeColor = ($color) =>css`
 
   ${() => $color === "Web Design" && Orange};

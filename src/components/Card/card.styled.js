@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { themeColor } from "../../globalStyle.styled";
+import { BackgroundColor, CardTitleColor, themeColor } from "../../globalStyle.styled";
 
 export const CardAnimation = keyframes`
   0% {
@@ -21,7 +21,8 @@ export const CardItem = styled.div`
 export const Card = styled.div`
   width: 220px;
   height: 130px;
-  background-color: #ffffff;
+  //background-color: #ffffff;
+  ${BackgroundColor};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -53,3 +54,32 @@ export const CardTheme = styled.div`
     line-height: 10px;
   }
 `;
+export const CardContent = styled.div `
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+`; 
+export const CardTitle = styled.h3 `
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  ${CardTitleColor};
+  margin-bottom: 10px;
+`
+export const CardDate = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  svg {
+  width: 13px;
+}
+p {
+  margin-left: 6px;
+  font-size: 10px;
+  line-height: 13px;
+  color: #94A6BE;
+  letter-spacing: 0.2px;
+}
+`
