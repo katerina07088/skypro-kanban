@@ -9,7 +9,12 @@ greenText:" #06B16E",
 purpleText: "#9A48F1",
 grayText: "#FFFFFF",
 backgroundCard: "#ffffff",
-titleColor: "#000000"
+titleColorCard: "#000000",
+backgroundColorHeader: "#ffffff",
+userColor: "#565eef",
+headerPopUserSetBackground:"#ffffff",
+//popUserSetName: "#000",
+//headerLogo: "none;"
 
 
 
@@ -25,5 +30,10 @@ greenBg:" #06B16E",
 purpleBg: "#9A48F1",
 grayBg: "#FFFFFF",
 backgroundCard: "#20202C",
-titleColor:  "#FFFFFF"
+titleColorCard:  "#FFFFFF",
+backgroundColorHeader: "#20202C",
+userColor: "#FFFFFF",
+headerPopUserSetBackground:"#202229",
+//popUserSetName:"#FFFFFF"
+//headerLogo: "none"
 }

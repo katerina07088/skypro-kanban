@@ -11,7 +11,8 @@ export const Header = ({ addCard, changeTheme, setChangeTheme }) => {
    setChangeTheme (changeTheme === "light" ? "dark" : "light");
   }
 
-  return (
+
+    return (
     <S.Header>
       <Container>
         <S.HeaderBlock>

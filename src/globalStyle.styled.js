@@ -49,6 +49,14 @@ export const Container = styled.div`
   padding: 0 30px;
 `;
 
+export const HeaderBackground = css`
+  background-color: ${({ theme }) => theme.backgroundColorHeader};
+`;
+
+export const HeaderUserColor = css`
+  color: ${({ theme }) => theme.userColor};
+`;
+
 export const Orange = css`
   background-color: ${({ theme }) => theme.orangeBg};
   color: ${({ theme }) => theme.orangeText};
@@ -66,19 +74,31 @@ export const Gray = css`
   color: ${({ theme }) => theme.greyText};
 `;
 
-export const BackgroundColor= css `
-background-color: ${({theme}) => theme.backgroundCard};
+// export const Logo = css`
+// display: ${({theme}) => theme.headerLogo}
+// `;
+
+// export const PopUserSetName = css`
+//   color: ${({ theme }) => theme.popUserSetName};
+// `;
+
+export const CardBackgroundColor = css`
+  background-color: ${({ theme }) => theme.backgroundCard};
 `;
 
-export const CardTitleColor = css `
-color:${({theme}) => theme.titleColor}
-`
-export const themeColor = ($color) =>css`
+export const CardTitleColor = css`
+  color: ${({ theme }) => theme.titleColorCard};
+`;
 
+export const HeaderPopUserSetBackground = css`
+  background-color: ${({ theme }) => theme.headerPopUserSetBackground};
+`;
+
+export const themeColor = ($color) => css`
   ${() => $color === "Web Design" && Orange};
   ${() => $color === "CopyWriting" && Purple};
   ${() => $color === "Research" && Green};
-`
+`;
 
 export const Hover01 = css`
   &:hover {

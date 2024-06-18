@@ -1,14 +1,15 @@
 //import { useState } from "react";
 import { Card } from "../Card/index.jsx";
+import * as S from "./column.styled.js"
 
 
 export const Column = ({ title, cards }) =>{
   return (
-    <div className="main__column column">
-      <div className="column__title">
+    <S.MainColumn>
+      <S.ColumnTitle>
         <p> {title} </p>
-      </div>
-      <div className="cards">
+      </S.ColumnTitle>
+      <S.Cards>
         {cards.map((card) => {
           return < Card 
           key = {card.id} 
@@ -17,7 +18,7 @@ export const Column = ({ title, cards }) =>{
           date = {card.date} 
           />
         })}
-      </div>
-    </div>
+      </S.Cards>
+    </S.MainColumn>
   );
 };

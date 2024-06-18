@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { BackgroundColor, CardTitleColor, themeColor } from "../../globalStyle.styled";
+import { CardBackgroundColor, CardTitleColor, themeColor } from "../../globalStyle.styled";
 
 export const CardAnimation = keyframes`
   0% {
@@ -22,7 +22,7 @@ export const Card = styled.div`
   width: 220px;
   height: 130px;
   //background-color: #ffffff;
-  ${BackgroundColor};
+  ${CardBackgroundColor};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
