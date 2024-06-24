@@ -75,11 +75,10 @@ export const Gray = css`
 `;
 
 // export const Logo = css`
-// display: ${({theme}) => theme.headerLogo}
-// `;
-
-// export const PopUserSetName = css`
-//   color: ${({ theme }) => theme.popUserSetName};
+// background-image: ${({theme}) => theme.logo};
+// img {
+//     width: 85px;
+//   }
 // `;
 
 export const CardBackgroundColor = css`

@@ -18,16 +18,16 @@ export const HeaderBlock = styled.div`
   padding: 0 10px;
 `;
 export const HeaderLogoLight = styled.div`
-  img {
+   img {
     width: 85px;
-  }
+  } 
  `;
-export const HeaderLogoDark = styled.div`
+ export const HeaderLogoDark = styled.div`
   img {
-    width: 85px;
+   width: 85px;
   }
   display: none;
-`;
+`; 
 export const HeaderBtnMainNew = styled.button`
   width: 178px;
   height: 30px;
