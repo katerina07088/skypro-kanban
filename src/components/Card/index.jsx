@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import * as S from "./card.styled.js";
 
-export const Card = ({ title, topic, date }) => {
+export const Card = ({ title, topic, date, id }) => {
   return (
     <S.CardItem>
       <S.Card>
@@ -8,13 +9,13 @@ export const Card = ({ title, topic, date }) => {
           <S.CardTheme $color={topic}>
             <p>{topic}</p>
           </S.CardTheme>
-          <a href="#popBrowse" target="_self">
+          <Link to= {`/card/${id}`}>
             <div className="card__btn">
               <div></div>
               <div></div>
               <div></div>
             </div>
-          </a>
+          </Link>
         </S.CardGroup>
         <S.CardContent>
           <a href="" target="_blank">

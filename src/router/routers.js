@@ -2,5 +2,7 @@ export const routes = {
     main: "/",
     login:"/login",
     register: "/register",
-    notFound: "*"
+    notFound: "*",
+    exit:"/exit",
+    card: "/card/:id"
 }
