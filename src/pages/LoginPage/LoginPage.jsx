@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Wrapper } from "../../globalStyle.styled"
 import { routes } from "../../router/routers"
-import   * as S  from "./LoginPage.styled"
+import   * as S  from "./loginPage.styled"
 
 export const LoginPage = () => {
     return(
@@ -25,6 +25,5 @@ export const LoginPage = () => {
             </S.Modal>
         </S.ContainerSignIn>
     </Wrapper>
-
     )
 }
