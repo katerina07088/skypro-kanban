@@ -6,8 +6,8 @@ import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { useState } from "react";
-import { PopUser } from "../components/Popups/PopUser";
-import { PopBrowse } from "../components/Popups/PopBrowse";
+import { ExitPage } from "../pages/ExitPage/ExitPage";
+import { CardPage } from "../pages/CardPage/CardPage";
 
 export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
   const [isAuth, setIsAuth] = useState(false)
@@ -25,8 +25,8 @@ export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
             }
           />
         </Route>
-        <Route path={routes.exit} element={<PopUser />} />
-        <Route path={routes.card} element={<PopBrowse />} />
+        <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>} />
+        <Route path={routes.card} element={<CardPage />} />
         <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth} isAuth={isAuth} />} />
         <Route path={routes.register} element={<RegisterPage />} />
         <Route path={routes.notFound} element={<NotFound />} />

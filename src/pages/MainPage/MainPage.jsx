@@ -35,7 +35,7 @@ export const MainPage = ({changeTheme, setChangeTheme}) => {
         <Outlet />
         <PopNewCard/>
         <Header addCard={addCard} setChangeTheme = {setChangeTheme} changeTheme={changeTheme}/>
-        {isLoading ? <p className = "loader">Loading ...</p> : <Main cards={cards} />}
+        {isLoading ? <p className = "loader">Loading ...</p> : <Main cards={cards}  />}
       </Wrapper>
     )
 }

@@ -10,11 +10,11 @@ export const Card = ({ title, topic, date, id }) => {
             <p>{topic}</p>
           </S.CardTheme>
           <Link to= {`/card/${id}`}>
-            <div className="card__btn">
+            <S.CardBtn>
               <div></div>
               <div></div>
               <div></div>
-            </div>
+            </S.CardBtn>
           </Link>
         </S.CardGroup>
         <S.CardContent>
