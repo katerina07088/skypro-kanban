@@ -15,19 +15,15 @@ export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoute isAuth={isAuth} />}>
-          <Route
-            path={routes.main}
-            element={
+          <Route path={routes.main} element={
               <MainPage
                 changeTheme={changeTheme}
                 setChangeTheme={setChangeTheme}
-              />
-            }
-          />
+              /> } >
         <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>} />
         <Route path={routes.card} element={<CardPage />} />
         </Route>
-       
+        </Route>
         <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth} isAuth={isAuth} />} />
         <Route path={routes.register} element={<RegisterPage />} />
         <Route path={routes.notFound} element={<NotFound />} />
