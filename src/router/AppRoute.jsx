@@ -24,9 +24,10 @@ export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
               />
             }
           />
-        </Route>
         <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>} />
         <Route path={routes.card} element={<CardPage />} />
+        </Route>
+       
         <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth} isAuth={isAuth} />} />
         <Route path={routes.register} element={<RegisterPage />} />
         <Route path={routes.notFound} element={<NotFound />} />
