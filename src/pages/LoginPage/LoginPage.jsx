@@ -31,7 +31,6 @@ export const LoginPage = ({setUser}) => {
 	nav(routes.main)
     })
     .catch((error)=>{
-      console.log(error.message)
       setError(error.message)
     })
 	}

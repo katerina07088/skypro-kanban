@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { PopNewCard } from "../../components/Popups/PopNewCard";
-//import { cardList } from "../../data";
 import { Wrapper } from "../../globalStyle.styled";
 import { Main } from "../../components/Main";
 import { Outlet } from "react-router-dom";
@@ -16,7 +15,7 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
         const addCard = () => {
             const newCard = {
               id: 13,
-              topic: "CopyWriting",
+              topic: "Copywriting",
               title: "Новая задача",
               date: "30.10.23",
               status: "Без статуса",

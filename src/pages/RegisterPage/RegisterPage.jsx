@@ -5,7 +5,7 @@ import * as S from "./registerPage.styled";
 import { useState } from "react";
 import { signUp } from "../../api/registerNewUser";
 
-export const RegisterPage = ({setUser}) => {
+export const RegisterPage = () => {
   const nav = useNavigate()
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -29,10 +29,7 @@ export const RegisterPage = ({setUser}) => {
 			return
 		}
     signUp(formData)
-		.then((res)=>{
-			setUser(res.name)
-			nav(routes.main)
-		})
+		nav(routes.login)
 		.catch((error)=>{
 			setError(error.message)
 		})
