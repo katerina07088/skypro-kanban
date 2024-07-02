@@ -29,7 +29,7 @@ export const RegisterPage = () => {
 			return
 		}
     signUp(formData)
-		nav(routes.login)
+		nav(routes.main)
 		.catch((error)=>{
 			setError(error.message)
 		})
