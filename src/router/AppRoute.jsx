@@ -19,6 +19,8 @@ export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
               <MainPage
                 changeTheme={changeTheme}
                 setChangeTheme={setChangeTheme}
+                user={user}
+                setUser={setUser}
               /> } >
         <Route path={routes.exit} element={<ExitPage setUser={setUser}/>} />
         <Route path={routes.card} element={<CardPage />} />

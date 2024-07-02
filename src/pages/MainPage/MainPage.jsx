@@ -39,7 +39,7 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
             // setTimeout(() => {
             //   setIsLoading(false);
             // }, 2000);
-          }, []);
+          }, [user.token]);
         
     return (
                

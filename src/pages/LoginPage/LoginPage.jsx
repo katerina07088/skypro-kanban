@@ -7,8 +7,7 @@ import { signIn } from "../../api/user";
 
 export const LoginPage = ({setUser}) => {
 	const nav = useNavigate()
-    const [error, setError] = useState("");
-
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     login:"", 
     password:""
@@ -27,7 +26,7 @@ export const LoginPage = ({setUser}) => {
     }
 		
     signIn(formData)
-    .then((res)=> {console.log (res.user)
+    .then((res)=> {
         setUser(res.user)
 	nav(routes.main)
     })
