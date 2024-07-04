@@ -16,6 +16,7 @@ export const RegisterPage = () => {
 
 	const handleRegister = async(e) => {
     e.preventDefault()
+    try{
     if (formData.login === '') {
 			setError('Введите почту')
 			return
@@ -31,9 +32,10 @@ export const RegisterPage = () => {
     signUp(formData).then(() =>{
 		nav(routes.main)
     })
-		.catch((error)=>{
+  }
+		catch (error) {
 			setError(error.message)
-		})
+		}
   }
   return (
     <Wrapper>
