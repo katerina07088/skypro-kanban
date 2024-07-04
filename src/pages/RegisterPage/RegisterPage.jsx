@@ -28,8 +28,9 @@ export const RegisterPage = () => {
 					setError('Введите имя')
 			return
 		}
-    signUp(formData)
+    signUp(formData).then(() =>{
 		nav(routes.main)
+    })
 		.catch((error)=>{
 			setError(error.message)
 		})
