@@ -95,8 +95,8 @@ export const HeaderPopUserSetBackground = css`
 
 export const themeColor = ($color) => css`
   ${() => $color === "Web Design" && Orange};
-  ${() => $color === "CopyWriting" && Purple};
   ${() => $color === "Research" && Green};
+  ${() => $color === "Copywriting" && Purple};
 `;
 
 export const Hover01 = css`

@@ -39,12 +39,12 @@ export const CardGroup = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-
 
   ${({ $color }) => themeColor($color)};
 

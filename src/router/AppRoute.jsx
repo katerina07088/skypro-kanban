@@ -10,21 +10,23 @@ import { ExitPage } from "../pages/ExitPage/ExitPage";
 import { CardPage } from "../pages/CardPage/CardPage";
 
 export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [user, setUser] = useState(null)
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<ProtectedRoute isAuth={isAuth} />}>
+        <Route element={<ProtectedRoute user={user} />}>
           <Route path={routes.main} element={
               <MainPage
                 changeTheme={changeTheme}
                 setChangeTheme={setChangeTheme}
+                user={user}
+                setUser={setUser}
               /> } >
-        <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>} />
+        <Route path={routes.exit} element={<ExitPage setUser={setUser}/>} />
         <Route path={routes.card} element={<CardPage />} />
         </Route>
         </Route>
-        <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth} isAuth={isAuth} />} />
+        <Route path={routes.login} element={<LoginPage setUser={setUser} user={user} />} />
         <Route path={routes.register} element={<RegisterPage />} />
         <Route path={routes.notFound} element={<NotFound />} />
       </Routes>
