@@ -17,6 +17,7 @@ export const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+     try {
     if (formData.login === "") {
       setError("Введите логин");
       return;
@@ -25,9 +26,9 @@ export const LoginPage = () => {
       setError("Введите пароль");
       return;
     }
-    try {
-        await signIn(formData)
-        .then((res) => {
+  
+       await signIn(formData)
+        .then((res) => { 
         login(res.user)
         nav(routes.main);
         localStorage.setItem("user", JSON.stringify(res));
