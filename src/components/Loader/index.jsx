@@ -1,4 +1,6 @@
+import * as S from "./loader.styled"
+
 export const Loader = ()=>{
     return(
-    <p className = "loader">Loading ...</p>)
+    <S.Loader> Loading ...</S.Loader>)
 }

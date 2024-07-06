@@ -3,7 +3,7 @@ import { Wrapper } from "../../globalStyle.styled";
 import { routes } from "../../router/routers";
 import * as S from "./registerPage.styled";
 import { useState } from "react";
-import { signUp } from "../../api/registerNewUser";
+import { signUp } from "../../api/user";
 
 export const RegisterPage = () => {
   const nav = useNavigate()

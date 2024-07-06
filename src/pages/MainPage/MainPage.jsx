@@ -12,17 +12,7 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
     const [error, setError] = useState("");
         const [isLoading, setIsLoading] = useState(true);
 
-        const addCard = () => {
-            const newCard = {
-              id: 13,
-              topic: "Copywriting",
-              title: "Новая задача",
-              date: "30.10.23",
-              status: "Без статуса",
-            };
-            setCards([...cards, newCard]);
-          };
-          useEffect(() => {
+            useEffect(() => {
             getTasks(user.token)
             .then ((res) =>{
               setCards(res.tasks)
@@ -45,7 +35,7 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
         <Wrapper>
         <Outlet />
         <PopNewCard/>
-        <Header addCard={addCard} setUser = {setUser} setChangeTheme = {setChangeTheme} changeTheme={changeTheme}/>
+        <Header setUser = {setUser} setChangeTheme = {setChangeTheme} changeTheme={changeTheme}/>
         {isLoading ? (<Loader />) : error ? <p> {error} </p> : <Main cards={cards} />}
       </Wrapper>
     )

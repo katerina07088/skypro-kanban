@@ -4,36 +4,38 @@ import { routes } from "../../router/routers";
 import * as S from "./loginPage.styled";
 import { useState } from "react";
 import { signIn } from "../../api/user";
+import { useUserContext } from "../../components/Context/useUserContext";
 
-export const LoginPage = ({setUser}) => {
-	const nav = useNavigate()
-  const [error, setError] = useState("");
+export const LoginPage = () => {
+  const nav = useNavigate();
+  const { login } = useUserContext();  
   const [formData, setFormData] = useState({
-    login:"", 
-    password:""
-  })
+    login: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
-
-	const handleLogin = (e) => {
-    e.preventDefault()
+  const handleLogin = async (e) => {
+    e.preventDefault();
     if (formData.login === "") {
-      setError("Введите логин")
-      return
+      setError("Введите логин");
+      return;
     }
     if (formData.password === "") {
-      setError("Введите пароль")
-      return
+      setError("Введите пароль");
+      return;
     }
-		
-    signIn(formData)
-    .then((res)=> {
-        setUser(res.user)
-	nav(routes.main)
-    })
-    .catch((error)=>{
-      setError(error.message)
-    })
-	}
+    try {
+        await signIn(formData)
+        .then((res) => {
+        login(res.user)
+        nav(routes.main);
+        localStorage.setItem("user", JSON.stringify(res));
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <Wrapper>
@@ -44,20 +46,30 @@ export const LoginPage = ({setUser}) => {
               <h2>Вход</h2>
             </S.ModalTtl>
             <S.ModalFormLogin onSubmit={handleLogin}>
-              <S.ModalInput onChange={ (e)=> setFormData({...formData, login: e.target.value})}
+              <S.ModalInput
+                onChange={(e) =>
+                  setFormData({ ...formData, login: e.target.value })
+                }
                 type="text"
                 name="login"
+                value= {formData.login}
                 id="formlogin"
                 placeholder="Эл. почта"
               />
-              <S.ModalInput  onChange={ (e)=> setFormData({...formData, password: e.target.value})}
+              <S.ModalInput
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
                 type="password"
                 name="password"
+                value= {formData.password}
                 id="formpassword"
                 placeholder="Пароль"
               />
               {error && <p> {error}</p>}
-              <S.ModaBtnEnter type ="submit" id="btnEnter"> Войти </S.ModaBtnEnter>
+              <S.ModaBtnEnter type="submit" id="btnEnter">
+                Войти
+              </S.ModaBtnEnter>
               <S.ModalFormGroup>
                 <p>Нужно зарегистрироваться?</p>
                 <Link to={routes.register}>Регистрируйтесь здесь</Link>

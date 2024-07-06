@@ -1,7 +1,9 @@
+import * as S from "./calendar.styled"
+
 export const Calendar = () =>{
     return (
         <div className="pop-new-card__calendar calendar">
-                  <p className="calendar__ttl subttl">Даты</p>
+                  <S.CalenderTtl className="subttl">Даты</S.CalenderTtl>
                   <div className="calendar__block">
                     <div className="calendar__nav">
                       <div className="calendar__month">Сентябрь 2023</div>
