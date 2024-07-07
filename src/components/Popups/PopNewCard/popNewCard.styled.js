@@ -3,6 +3,7 @@ import {Hover01, themeColor} from "../../../globalStyle.styled";
 
 
 export const PopNewCard = styled.div`
+ //display:none;
   width: 100%;
   min-width: 375px;
   height: 100%;

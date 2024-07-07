@@ -2,21 +2,40 @@ import { Link } from "react-router-dom";
 import { Calendar } from "../../Calendar/index.jsx";
 import * as S from "./popNewCard.styled.js"
 import { routes } from "../../../router/routers.js";
+//import { addCard } from "../../../api/tasks.js";
+//import { useUserContext } from "../../Context/useUserContext.js";
+//import { useState } from "react";
 
 
 
 export const PopNewCard = ({topic}) => {
+
+  // const AddTask = ({ onTaskAdded }) => {
+  //   const [title, setTitle] = useState('');
+  //   const { user } = useUserContext();
+  
+  //   const handleSubmit = async (event) => {
+  //     event.preventDefault();
+  //     const newCard= {
+  //       title,
+  //       date: new Date().toISOString(), // Убедитесь, что дата передается в ISO формате
+  //     };
+  //     await addCard(newCard, user.token);
+  //     onTaskAdded();
+  //   };
+  
+
   return (
     <S.PopNewCard id="popNewCard">
       <S.PopNewCardContainer>
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+             <Link to= {routes.main}>
              <S.PopNewCardClose>
-              <Link to= {routes.main}>
-              &#10006;</Link>
+              &#10006;
             </S.PopNewCardClose>
-          
+            </Link>
             <S.PopNewCardWrap>
               <S.PopNewCardForm
                 id="formNewCard"

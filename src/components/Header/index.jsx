@@ -5,17 +5,17 @@ import { routes } from "../../router/routers.js";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../Context/useUserContext.js";
 
-export const Header = ({ changeTheme, setChangeTheme}) => {
+export const Header = ({ changeTheme, setChangeTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {user} = useUserContext();
+  const { user } = useUserContext();
 
   const toggleOpenUser = () => {
     setIsOpen(!isOpen);
   };
   const onChangeTheme = () => {
-   setChangeTheme (changeTheme === "light" ? "dark" : "light");
-  }
-    return (
+    setChangeTheme(changeTheme === "light" ? "dark" : "light");
+  };
+  return (
     <S.Header>
       <Container>
         <S.HeaderBlock>
@@ -30,10 +30,13 @@ export const Header = ({ changeTheme, setChangeTheme}) => {
             </a>
           </S.HeaderLogoDark>
           <S.HeaderNav>
-            <Link to={routes.add}> <S.HeaderBtnMainNew id="btnMainNew">
-            Создать новую задачу
-            </S.HeaderBtnMainNew></Link>
-           
+            <Link to={routes.add}>
+              {" "}
+              <S.HeaderBtnMainNew id="btnMainNew">
+                Создать новую задачу
+              </S.HeaderBtnMainNew>{" "}
+            </Link>
+
             <S.HeaderUser onClick={toggleOpenUser}>{user.name}</S.HeaderUser>
             {isOpen && (
               <S.HeaderPopUserSet id="user-set-target">
@@ -42,10 +45,19 @@ export const Header = ({ changeTheme, setChangeTheme}) => {
                 <S.PopUserSetMail>{user.email}</S.PopUserSetMail>
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input checked = {changeTheme === "dark"} onClick={onChangeTheme} type="checkbox" className="checkbox"  name="checkbox" />
+                  <input
+                    checked={changeTheme === "dark"}
+                    onClick={onChangeTheme}
+                    type="checkbox"
+                    className="checkbox"
+                    name="checkbox"
+                  />
                 </S.PopUserSetTheme>
                 <S.BtnExit>
-                  <S.BtnExit> <Link to = {routes.exit}> Выйти </Link></S.BtnExit>
+                  <S.BtnExit>
+                    {" "}
+                    <Link to={routes.exit}> Выйти </Link>
+                  </S.BtnExit>
                 </S.BtnExit>
               </S.HeaderPopUserSet>
             )}

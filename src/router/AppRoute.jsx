@@ -8,7 +8,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 //import { useState } from "react";
 import { ExitPage } from "../pages/ExitPage/ExitPage";
 import { CardPage } from "../pages/CardPage/CardPage";
-import { NewCardPage } from "../pages/NewCardPage/NewCardPage";
+import { NewCardPage } from "../pages/AddCardPage/AddCardPage";
 import { UserProvider } from "../components/Context/UserContext";
 
 export const AppRoutes = ({ changeTheme, setChangeTheme }) => {

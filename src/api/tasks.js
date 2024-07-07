@@ -16,7 +16,7 @@ export const getTasks = async (token) => {
 };
 
 //добавление задачи
-export const addTask = async (taskData, token) => {
+export const addCard= async (taskData, token) => {
   const response = await fetch(apiUrl, {
     method: "POST",
     headers: {
@@ -32,7 +32,7 @@ export const addTask = async (taskData, token) => {
   return response.json();
 };
 // получение задачи по id
-export const getTaskById = async (token, taskData) => {
+export const getCardById = async (token, taskData) => {
     const response = await fetch(apiUrlOfOneTask, {
       method: "GET",
       headers: {
@@ -48,7 +48,7 @@ export const getTaskById = async (token, taskData) => {
   };
 
 // редактирование задачи
-export const editTask = async (token, taskData) => {
+export const editCard = async (token, taskData) => {
     const response = await fetch(apiUrlOfOneTask, {
       method: "PUT",
       headers: {
@@ -66,7 +66,7 @@ export const editTask = async (token, taskData) => {
 
 
 //удаление задачи
-export const gdeleteTask = async (token, taskData) => {
+export const deleteCard = async (token, taskData) => {
     const response = await fetch(apiUrlOfOneTask, {
       method: "DELETE",
       headers: {

@@ -6,9 +6,11 @@ import { Main } from "../../components/Main";
 import { Outlet } from "react-router-dom";
 import { getTasks } from "../../api/tasks";
 import { Loader } from "../../components/Loader";
+import { useUserContext } from "../../components/Context/useUserContext";
 
-export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
-    const [cards, setCards] = useState([]);
+export const MainPage = ({changeTheme, setChangeTheme}) => {
+   const {user, setUser} = useUserContext();
+  const [cards, setCards] = useState([]);
     const [error, setError] = useState("");
         const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +30,7 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
             // setTimeout(() => {
             //   setIsLoading(false);
             // }, 2000);
-          }, [user.token]);
+          }, [user]);
         
     return (
                
@@ -38,5 +40,5 @@ export const MainPage = ({changeTheme, setChangeTheme, user, setUser}) => {
         <Header setUser = {setUser} setChangeTheme = {setChangeTheme} changeTheme={changeTheme}/>
         {isLoading ? (<Loader />) : error ? <p> {error} </p> : <Main cards={cards} />}
       </Wrapper>
-    )
+    );
 }

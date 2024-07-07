@@ -8,7 +8,7 @@ import { useUserContext } from "../../components/Context/useUserContext";
 
 export const LoginPage = () => {
   const nav = useNavigate();
-  const { login } = useUserContext();  
+  const { login } = useUserContext();
   const [formData, setFormData] = useState({
     login: "",
     password: "",
@@ -17,19 +17,18 @@ export const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-     try {
-    if (formData.login === "") {
-      setError("Введите логин");
-      return;
-    }
-    if (formData.password === "") {
-      setError("Введите пароль");
-      return;
-    }
-  
-       await signIn(formData)
-        .then((res) => { 
-        login(res.user)
+    try {
+      if (formData.login === "") {
+        setError("Введите логин");
+        return;
+      }
+      if (formData.password === "") {
+        setError("Введите пароль");
+        return;
+      }
+
+      await signIn(formData).then((res) => {
+        login(res.user);
         nav(routes.main);
         localStorage.setItem("user", JSON.stringify(res));
       });
@@ -53,7 +52,7 @@ export const LoginPage = () => {
                 }
                 type="text"
                 name="login"
-                value= {formData.login}
+                value={formData.login}
                 id="formlogin"
                 placeholder="Эл. почта"
               />
@@ -63,7 +62,7 @@ export const LoginPage = () => {
                 }
                 type="password"
                 name="password"
-                value= {formData.password}
+                value={formData.password}
                 id="formpassword"
                 placeholder="Пароль"
               />
