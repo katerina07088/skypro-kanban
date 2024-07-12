@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Hover01, themeColor} from "../../../globalStyle.styled";
+import {ActiveCategory, Green, Hover01, Orange, Purple} from "../../../globalStyle.styled";
 
 
 export const PopNewCard = styled.div`
@@ -12,6 +12,9 @@ export const PopNewCard = styled.div`
   top: 0;
   left: 0;
   z-index: 6;
+  @media screen and (max-width: 660px) {
+    top: 70px;
+    }
 `
 
 export const PopNewCardContainer = styled.div`
@@ -24,6 +27,10 @@ width: 100%;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 660px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `
 
 export const PopNewCardBlock = styled.div`
@@ -36,6 +43,9 @@ export const PopNewCardBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #D4DBE5;
   position: relative;
+  @media screen and (max-width: 660px) {
+    border-radius: 0;
+  }
 `
 export const PopNewCardContent = styled.div`
  display: block;
@@ -50,12 +60,14 @@ export const PopNewCardTtl = styled.h3`
   margin-bottom: 20px;
 `
 
-export const PopNewCardClose = styled.a`
+export const PopNewCardClose = styled.span`
   position: absolute;
   top: 20px;
   right: 30px;
   color: #94A6BE;
   cursor: pointer;
+  /* border-color: transparent;
+  background-color: transparent; */
   :hover {
   color: #000000;
 }
@@ -64,6 +76,9 @@ export const PopNewCardWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  @media screen and (max-width: 660px) {
+    display: block;
+  }
 `
 export const PopNewCardForm = styled.form`
   max-width: 370px;
@@ -173,8 +188,8 @@ export const CategoriesThemes = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 `
-export const CategoriesTheme = styled.div`
-    display: inline-block;
+export const CategoriesThemeOrange = styled.div`
+  display: inline-block;
   width: auto;
   height: 30px;
   padding: 8px 20px;
@@ -187,5 +202,41 @@ export const CategoriesTheme = styled.div`
   line-height: 14px;
   white-space: nowrap;
 }
-${({ $color }) => themeColor ($color)};
-`
+ ${ActiveCategory}; 
+ ${Orange};
+`  
+
+
+export const CategoriesThemeGreen = styled.div`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+}
+ ${Green};
+`  
+
+export const CategoriesThemePurple = styled.div`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+} 
+ ${Purple};
+`  

@@ -1,29 +1,63 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "../../Calendar/index.jsx";
-import * as S from "./popNewCard.styled.js"
+import * as S from "./popNewCard.styled.js";
 import { routes } from "../../../router/routers.js";
-//import { addCard } from "../../../api/tasks.js";
-//import { useUserContext } from "../../Context/useUserContext.js";
-//import { useState } from "react";
+import { useState } from "react";
+import { useTaskContext } from "../../Context/useTaskContext.js";
+import { addTask } from "../../../api/tasks.js";
+import { useUserContext } from "../../Context/useUserContext.js";
 
 
+export const PopNewCard = () => {
+  const { user } = useUserContext();
+  const { setTasks } = useTaskContext();
+  const nav = useNavigate();
+  const [error, setError] = useState("");
+  const [date] = useState(new Date)
 
-export const PopNewCard = ({topic}) => {
+  const [newTaskData, setNewTaskData] = useState({
+    title: "",
+    topic:"",
+    description: "",
+    status: "",
+  });
 
-  // const AddTask = ({ onTaskAdded }) => {
-  //   const [title, setTitle] = useState('');
-  //   const { user } = useUserContext();
-  
-  //   const handleSubmit = async (event) => {
-  //     event.preventDefault();
-  //     const newCard= {
-  //       title,
-  //       date: new Date().toISOString(), // Убедитесь, что дата передается в ISO формате
-  //     };
-  //     await addCard(newCard, user.token);
-  //     onTaskAdded();
-  //   };
-  
+  const newCard = {      
+    title:newTaskData.title,
+    topic: newTaskData.topic,
+    status:newTaskData.status,
+    description: newTaskData.description.trim() || '',
+    date: date.toISOString(),    // ???
+  };
+
+  const addNewTask = async (e) => {
+    e.preventDefault();
+
+    if (newTaskData.title === "") {
+      setError("Введите название задачи");
+      return;
+    }
+    if (newTaskData.description === "") {
+      setError("Введите описание задачи");
+      return;
+    }
+    if (newTaskData.date === "") {
+      setError("Выберите срок исполнения");
+      return;
+    }
+    // if (newTaskData.status === "") {
+    //   setError("Выберите статус задачи");
+    //   return;
+    // }
+    try {
+      await addTask(newCard, user.token).then((res) => {
+        setTasks(res.tasks);
+        nav(routes.main);
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <S.PopNewCard id="popNewCard">
@@ -31,169 +65,73 @@ export const PopNewCard = ({topic}) => {
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
-             <Link to= {routes.main}>
-             <S.PopNewCardClose>
-              &#10006;
-            </S.PopNewCardClose>
+            <Link to={routes.main}>
+              <S.PopNewCardClose>&#10006;</S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
-              <S.PopNewCardForm
-                id="formNewCard"
-                action="#"
-              >
+              <S.PopNewCardForm id="formNewCard" action="#">
                 <S.FormNewBlock>
-                  <S.SubTtl htmlFor="formTitle">
-                    Название задачи
-                  </S.SubTtl>
+                  <S.SubTtl htmlFor="formTitle">Название задачи</S.SubTtl>
                   <S.FormNewInput
+                    onChange={(e) =>
+                      setNewTaskData({ ...newTaskData, title: e.target.value })
+                    }
                     type="text"
                     name="name"
                     id="formTitle"
                     placeholder="Введите название задачи..."
+                    value={newTaskData.title}
                     autoFocus
                   />
                 </S.FormNewBlock>
                 <S.FormNewBlock>
-                  <S.SubTtl htmlFor="textArea">
-                    Описание задачи
-                  </S.SubTtl>
+                  <S.SubTtl htmlFor="textArea">Описание задачи</S.SubTtl>
                   <S.FormNewArea
+                    onChange={(e) =>
+                      setNewTaskData({ ...newTaskData, description: e.target.value })
+                    }
                     name="text"
                     id="textArea"
                     placeholder="Введите описание задачи..."
+                    value={newTaskData.description}
                   ></S.FormNewArea>
                 </S.FormNewBlock>
               </S.PopNewCardForm>
 
               <Calendar />
-              {/* <div className="pop-new-card__calendar calendar">
-                  <p className="calendar__ttl subttl">Даты</p>
-                  <div className="calendar__block">
-                    <div className="calendar__nav">
-                      <div className="calendar__month">Сентябрь 2023</div>
-                      <div className="nav__actions">
-                        <div className="nav__action" data-action="prev">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="6"
-                            height="11"
-                            viewBox="0 0 6 11"
-                          >
-                            <path d="M5.72945 1.95273C6.09018 1.62041 6.09018 1.0833 5.72945 0.750969C5.36622 0.416344 4.7754 0.416344 4.41218 0.750969L0.528487 4.32883C-0.176162 4.97799 -0.176162 6.02201 0.528487 6.67117L4.41217 10.249C4.7754 10.5837 5.36622 10.5837 5.72945 10.249C6.09018 9.9167 6.09018 9.37959 5.72945 9.04727L1.87897 5.5L5.72945 1.95273Z" />
-                          </svg>
-                        </div>
-                        <div className="nav__action" data-action="next">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="6"
-                            height="11"
-                            viewBox="0 0 6 11"
-                          >
-                            <path d="M0.27055 9.04727C-0.0901833 9.37959 -0.0901832 9.9167 0.27055 10.249C0.633779 10.5837 1.2246 10.5837 1.58783 10.249L5.47151 6.67117C6.17616 6.02201 6.17616 4.97799 5.47151 4.32883L1.58782 0.75097C1.2246 0.416344 0.633778 0.416344 0.270549 0.75097C-0.0901831 1.0833 -0.090184 1.62041 0.270549 1.95273L4.12103 5.5L0.27055 9.04727Z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="calendar__content">
-                      <div className="calendar__days-names">
-                        <div className="calendar__day-name">пн</div>
-                        <div className="calendar__day-name">вт</div>
-                        <div className="calendar__day-name">ср</div>
-                        <div className="calendar__day-name">чт</div>
-                        <div className="calendar__day-name">пт</div>
-                        <div className="calendar__day-name -weekend-">сб</div>
-                        <div className="calendar__day-name -weekend-">вс</div>
-                      </div>
-                      <div className="calendar__cells">
-                        <div className="calendar__cell _other-month">28</div>
-                        <div className="calendar__cell _other-month">29</div>
-                        <div className="calendar__cell _other-month">30</div>
-                        <div className="calendar__cell _cell-day">31</div>
-                        <div className="calendar__cell _cell-day">1</div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          2
-                        </div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          3
-                        </div>
-                        <div className="calendar__cell _cell-day">4</div>
-                        <div className="calendar__cell _cell-day">5</div>
-                        <div className="calendar__cell _cell-day ">6</div>
-                        <div className="calendar__cell _cell-day">7</div>
-                        <div className="calendar__cell _cell-day _current">
-                          8
-                        </div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          9
-                        </div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          10
-                        </div>
-                        <div className="calendar__cell _cell-day">11</div>
-                        <div className="calendar__cell _cell-day">12</div>
-                        <div className="calendar__cell _cell-day">13</div>
-                        <div className="calendar__cell _cell-day">14</div>
-                        <div className="calendar__cell _cell-day">15</div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          16
-                        </div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          17
-                        </div>
-                        <div className="calendar__cell _cell-day">18</div>
-                        <div className="calendar__cell _cell-day">19</div>
-                        <div className="calendar__cell _cell-day">20</div>
-                        <div className="calendar__cell _cell-day">21</div>
-                        <div className="calendar__cell _cell-day">22</div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          23
-                        </div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          24
-                        </div>
-                        <div className="calendar__cell _cell-day">25</div>
-                        <div className="calendar__cell _cell-day">26</div>
-                        <div className="calendar__cell _cell-day">27</div>
-                        <div className="calendar__cell _cell-day">28</div>
-                        <div className="calendar__cell _cell-day">29</div>
-                        <div className="calendar__cell _cell-day _weekend">
-                          30
-                        </div>
-                        <div className="calendar__cell _other-month _weekend">
-                          1
-                        </div>
-                      </div>
-                    </div>
-
-                    <input
-                      type="hidden"
-                      id="datepick_value"
-                      value="08.09.2023"
-                    />
-                    <div className="calendar__period">
-                      <p className="calendar__p date-end">
-                        Выберите срок исполнения{" "}
-                        <span className="date-control"></span>.
-                      </p>
-                    </div>
-                  </div>
-                </div> */}
+            
             </S.PopNewCardWrap>
             <S.Categories>
               <S.CategoriesSubTtl>Категория</S.CategoriesSubTtl>
               <S.CategoriesThemes>
-                <S.CategoriesTheme $color={topic} className=" _active-category">
+                <S.CategoriesThemeOrange
+                name="topic"
+                value="Web Design"
+                onChange={(e) =>
+                  setNewTaskData({ ...newTaskData, status: e.target.value })
+                }>
                   <p>Web Design</p>
-                </S.CategoriesTheme>
-                <S.CategoriesTheme>
+                </S.CategoriesThemeOrange>
+                <S.CategoriesThemeGreen
+                name="topic"
+                value="Research"
+                onChange={(e) =>
+                  setNewTaskData({ ...newTaskData, status: e.target.value })
+                }>
                   <p>Research</p>
-                </S.CategoriesTheme>
-                <S.CategoriesTheme>
+                </S.CategoriesThemeGreen>
+                <S.CategoriesThemePurple
+                name="topic"
+                value="Copywriting"
+                onChange={(e) =>
+                  setNewTaskData({ ...newTaskData, status: e.target.value })
+                }>
                   <p>Copywriting</p>
-                </S.CategoriesTheme>
+                </S.CategoriesThemePurple>
               </S.CategoriesThemes>
             </S.Categories>
-            <S.FormNewCreate id="btnCreate">
+            {error && <p> {error}</p>}
+            <S.FormNewCreate onClick={addNewTask} id="btnCreate">
               Создать задачу
             </S.FormNewCreate>
           </S.PopNewCardContent>

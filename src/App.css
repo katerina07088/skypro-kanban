@@ -109,10 +109,10 @@ body {
   background: #94A6BE;
   color: #FFFFFF;
 } */
-
+/* 
 ._active-category {
   opacity: 1 !important;
-}
+} */
 
 .pop-wrap {
   position: relative;
@@ -406,10 +406,10 @@ body {
   line-height: 1;
 } */
 
-.calendar {
+/* .calendar {
   width: 182px;
   margin-bottom: 20px;
-}
+} */
 /* .calendar__ttl {
   margin-bottom: 14px;
   padding: 0 7px;
@@ -431,9 +431,9 @@ body {
   line-height: 25px;
   font-weight: 600;
 }
-.calendar__content {
+/* .calendar__content {
   margin-bottom: 12px;
-}
+} */
 .calendar__days-names {
   display: flex;
   flex-wrap: nowrap;
@@ -915,20 +915,20 @@ body {
 } */
 
 @media screen and (max-width: 1200px) {
-  .main__block {
+  /* .main__block {
     width: 100%;
     margin: 0 auto;
     padding: 40px 0 64px;
-  }
-  .main__content {
+  } */
+  /* .main__content {
     display: block;
-  }
-  .main__column {
+  } */
+  /* .main__column {
     width: 100%;
     margin: 0 auto;
     display: block;
-  }
-  .cards {
+  } */
+  /* .cards {
     width: 100%;
     display: flex;
     overflow-y: auto;
@@ -943,26 +943,26 @@ body {
     align-items: flex-start;
     justify-content: stretch;
     padding: 15px 13px 19px;
-  }
+  } */
 }
 @media screen and (max-width: 660px) {
-  .pop-new-card {
+  /* .pop-new-card {
     top: 70px;
-  }
-  .pop-new-card__container {
+  } */
+  /* .pop-new-card__container {
     padding: 0;
     justify-content: flex-start;
-  }
-  .pop-new-card__block {
+  } */
+  /* .pop-new-card__block {
     border-radius: 0;
-  }
-  .pop-new-card__wrap {
+  } */
+  /* .pop-new-card__wrap {
     display: block;
-  }
-  .calendar {
+  } */
+  /* .calendar {
     max-width: 340px;
     width: 100%;
-  }
+  } */
   .calendar__ttl, .calendar__nav, .calendar__period {
     padding: 0;
   }
@@ -1003,10 +1003,10 @@ body {
   }
 }
 @media screen and (max-width: 495px) {
-  .container {
+  /* .container {
     width: 100%;
     padding: 0 16px;
-  }
+  } */
   .header__btn-main-new {
     z-index: 3;
     position: fixed;
@@ -1030,9 +1030,9 @@ body {
     width: 100%;
     display: block;
   }
-  .pop-new-card__calendar {
+  /* .pop-new-card__calendar {
     width: 100%;
-  }
+  } */
   .form-new__area {
     max-width: 100%;
     height: 34px;

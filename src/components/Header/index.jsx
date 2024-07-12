@@ -12,6 +12,8 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
   const toggleOpenUser = () => {
     setIsOpen(!isOpen);
   };
+
+ 
   const onChangeTheme = () => {
     setChangeTheme(changeTheme === "light" ? "dark" : "light");
   };
@@ -31,10 +33,9 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
           </S.HeaderLogoDark>
           <S.HeaderNav>
             <Link to={routes.add}>
-              {" "}
               <S.HeaderBtnMainNew id="btnMainNew">
                 Создать новую задачу
-              </S.HeaderBtnMainNew>{" "}
+              </S.HeaderBtnMainNew>
             </Link>
 
             <S.HeaderUser onClick={toggleOpenUser}>{user.name}</S.HeaderUser>
@@ -55,7 +56,6 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
                 </S.PopUserSetTheme>
                 <S.BtnExit>
                   <S.BtnExit>
-                    {" "}
                     <Link to={routes.exit}> Выйти </Link>
                   </S.BtnExit>
                 </S.BtnExit>

@@ -10,11 +10,13 @@ import { ExitPage } from "../pages/ExitPage/ExitPage";
 import { CardPage } from "../pages/CardPage/CardPage";
 import { NewCardPage } from "../pages/AddCardPage/AddCardPage";
 import { UserProvider } from "../components/Context/UserContext";
+import { TaskProvider } from "../components/Context/TaskContext";
 
 export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
   //const [user, setUser] = useState(null)
   return (
     <UserProvider>
+    <TaskProvider> 
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoute />}>
@@ -33,6 +35,7 @@ export const AppRoutes = ({ changeTheme, setChangeTheme }) => {
         <Route path={routes.notFound} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </TaskProvider>
     </UserProvider>
   );
 };

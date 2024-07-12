@@ -16,11 +16,10 @@ export const getTasks = async (token) => {
 };
 
 //добавление задачи
-export const addCard= async (taskData, token) => {
+export const addTask= async (taskData, token) => {
   const response = await fetch(apiUrl, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json", // что это?
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(taskData),
