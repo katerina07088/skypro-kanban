@@ -14,6 +14,11 @@ export const PopNewCard = () => {
   const nav = useNavigate();
   const [error, setError] = useState("");
   const [date] = useState(new Date)
+  const [checked, setChecked] = useState(false);
+
+  const handleChecked = ()=>{
+    setChecked(!checked)
+  }
 
   const [newTaskData, setNewTaskData] = useState({
     title: "",
@@ -45,10 +50,10 @@ export const PopNewCard = () => {
       setError("Выберите срок исполнения");
       return;
     }
-    // if (newTaskData.status === "") {
-    //   setError("Выберите статус задачи");
-    //   return;
-    // }
+    if (newTaskData.status === "") {
+      setError("Выберите статус задачи");
+      return;
+    }
     try {
       await addTask(newCard, user.token).then((res) => {
         setTasks(res.tasks);
@@ -102,32 +107,42 @@ export const PopNewCard = () => {
             
             </S.PopNewCardWrap>
             <S.Categories>
-              <S.CategoriesSubTtl>Категория</S.CategoriesSubTtl>
+              <S.CategoriesSubTtl>Категория</S.CategoriesSubTtl>  
+                          
+             
               <S.CategoriesThemes>
-                <S.CategoriesThemeOrange
+               
+                <S.CategoriesThemeOrange  onChange={(e) => setNewTaskData({ ...newTaskData, status: e.target.value })}
                 name="topic"
+                type="radio"
                 value="Web Design"
-                onChange={(e) =>
+                id = "orangeTopic" 
+                 
+                />   
+                <S.TopicOrange htmlFor="orangeTopic"> Web Design </S.TopicOrange>
+
+                <S.CategoriesThemeGreen onChange={(e) =>
                   setNewTaskData({ ...newTaskData, status: e.target.value })
-                }>
-                  <p>Web Design</p>
-                </S.CategoriesThemeOrange>
-                <S.CategoriesThemeGreen
+                }
                 name="topic"
+                type="radio" 
                 value="Research"
-                onChange={(e) =>
+                id = "greenTopic" 
+               />
+                   <S.TopicGreen htmlFor="greenTopic"> Research </S.TopicGreen>
+
+                <S.CategoriesThemePurple onChange={(e) =>
                   setNewTaskData({ ...newTaskData, status: e.target.value })
-                }>
-                  <p>Research</p>
-                </S.CategoriesThemeGreen>
-                <S.CategoriesThemePurple
+                }
                 name="topic"
+                type="radio"
                 value="Copywriting"
-                onChange={(e) =>
-                  setNewTaskData({ ...newTaskData, status: e.target.value })
-                }>
-                  <p>Copywriting</p>
-                </S.CategoriesThemePurple>
+                id = "purpleTopic"
+                />
+                <S.TopicPurple htmlFor="purpleTopic"> Copywriting </S.TopicPurple>
+              
+
+
               </S.CategoriesThemes>
             </S.Categories>
             {error && <p> {error}</p>}

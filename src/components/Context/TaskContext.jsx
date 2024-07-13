@@ -1,11 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
 import { useTaskContext } from './useTaskContext';
+import { UseDate } from '../hooks/useDate';
+
 
 
 export const TaskContext = createContext(null);
 
 export const TaskProvider = ({ children }) => {
    const [tasks, setTasks] = useState(useTaskContext()); 
+   const {selected, setSelected, selectedDate} = UseDate();
    
    
  useEffect(() => {
@@ -18,7 +21,7 @@ useEffect(() => {
  }, [tasks]);
 
   return (
-    <TaskContext.Provider value={{ tasks, setTasks }}>
+    <TaskContext.Provider value={{ tasks, setTasks, selected, setSelected, selectedDate }}>
       {children}
     </TaskContext.Provider>
   );
