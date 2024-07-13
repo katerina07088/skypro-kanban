@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Wrapper } from "../../globalStyle.styled";
 import { routes } from "../../router/routers";
-import * as S from "./loginPage.styled";
+import * as S from "./loginPage1.styled";
 import { useState } from "react";
 import { signIn } from "../../api/user";
 import { useUserContext } from "../../components/Context/useUserContext";
