@@ -79,9 +79,9 @@ export const Gray = css`
   color: ${({ theme }) => theme.greyText};
 `;
 
-export const ActiveCategory = css`
-opacity: 1 !important;
-`;
+// export const ActiveCategory = css`
+// opacity: 1 !important;
+// `;
 
 // export const Logo = css`
 // background-image: ${({theme}) => theme.logo};

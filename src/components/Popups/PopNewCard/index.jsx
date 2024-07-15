@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "../../Calendar/index.jsx";
 import * as S from "./popNewCard.styled.js";
 import { routes } from "../../../router/routers.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTaskContext } from "../../Context/useTaskContext.js";
 import { addTask } from "../../../api/tasks.js";
 import { useUserContext } from "../../Context/useUserContext.js";
+//import { format } from "date-fns";
+//import { ru } from "date-fns/locale";
+
 //import { format } from "date-fns";
 //import { ru } from "date-fns/locale";
 
@@ -15,19 +18,16 @@ export const PopNewCard = () => {
   const { setTasks } = useTaskContext();
   const nav = useNavigate();
   const [error, setError] = useState("");
-  const [date] = useState(new Date)
- // const [selected, setSelected] = useState();
+ 
 
-  // const handleChecked = ()=>{
-  //   setChecked(!checked)
-  // }
 
+  const [selected, setSelected] = useState();
+ 
   const [newTaskData, setNewTaskData] = useState({
     title: "",
     topic:"",
     status: "",
     description: "",
-    date:""
   });
 
   const newCard = {      
@@ -35,17 +35,8 @@ export const PopNewCard = () => {
     topic: newTaskData.topic,
     status:newTaskData.status,
     description: newTaskData.description.trim() || '',
-    date: date.toISOString(),    // ???
+    date: selected 
   };
-
-  // useEffect(() => {
-  //   if (selected) {
-  //     let result = format (selected, "dd.MM.yy", { locale: ru });
-  //     setNewTaskData({ ...newTaskData, date: `${result}` });
-  //   }
-  // }, [newTaskData, selected]);
-
-
 
 
   const addNewTask = async (e) => {
@@ -59,14 +50,14 @@ export const PopNewCard = () => {
       setError("Введите описание задачи");
       return;
     }
-    // if (newTaskData.date === "") {
-    //   setError("Выберите срок исполнения");
-    //   return;
-    // }
-    // if (newTaskData.status === "") {
-    //   setError("Выберите статус задачи");
-    //   return;
-    // }
+    if (newTaskData.date === "") {
+      setError("Выберите срок исполнения");
+      return;
+    }
+    if (newTaskData.status === "") {
+      setError("Выберите статус задачи");
+      return;
+    }
     try {
       await addTask(newCard, user.token).then((res) => {
         setTasks(res.tasks);
@@ -76,6 +67,9 @@ export const PopNewCard = () => {
       setError(error.message);
     }
   };
+ console.log()
+
+
 
   return (
     <S.PopNewCard id="popNewCard">
@@ -116,8 +110,11 @@ export const PopNewCard = () => {
                 </S.FormNewBlock>
               </S.PopNewCardForm>
 
-              <Calendar />
+             <Calendar selected={selected} setSelected={setSelected}/>
             
+
+          
+
             </S.PopNewCardWrap>
             <S.Categories>
               <S.CategoriesSubTtl>Категория</S.CategoriesSubTtl>  
@@ -125,34 +122,36 @@ export const PopNewCard = () => {
              
               <S.CategoriesThemes>
                
-                <S.CategoriesThemeOrange  onChange={(e) => setNewTaskData({ ...newTaskData, status: e.target.value })}
+                <S.CategoriesThemeOrange  onChange={(e) => setNewTaskData({ ...newTaskData, topic: e.target.value })}
                 name="topic"
                 type="radio"
                 value="Web Design"
                 id = "orangeTopic" 
-                 
+                                
                 />   
-                <S.TopicOrange htmlFor="orangeTopic"> Web Design </S.TopicOrange>
+                <S.TopicOrange active={newTaskData.topic === "Web Design"} htmlFor="orangeTopic"> Web Design </S.TopicOrange>
 
                 <S.CategoriesThemeGreen onChange={(e) =>
-                  setNewTaskData({ ...newTaskData, status: e.target.value })
+                  setNewTaskData({ ...newTaskData, topic: e.target.value })
                 }
                 name="topic"
                 type="radio" 
                 value="Research"
                 id = "greenTopic" 
+                
                />
-                   <S.TopicGreen htmlFor="greenTopic"> Research </S.TopicGreen>
+                   <S.TopicGreen  active={newTaskData.topic === "Research"}     htmlFor="greenTopic"> Research </S.TopicGreen>
 
                 <S.CategoriesThemePurple onChange={(e) =>
-                  setNewTaskData({ ...newTaskData, status: e.target.value })
+                  setNewTaskData({ ...newTaskData, topic: e.target.value })
                 }
                 name="topic"
                 type="radio"
                 value="Copywriting"
                 id = "purpleTopic"
+              
                 />
-                <S.TopicPurple htmlFor="purpleTopic"> Copywriting </S.TopicPurple>
+                <S.TopicPurple  active={newTaskData.topic === "Copywriting"} htmlFor="purpleTopic"> Copywriting </S.TopicPurple>
               
 
 

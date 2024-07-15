@@ -1,9 +1,8 @@
 import * as S from "./calendar.styled";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
-import { useState } from "react";
 import "react-day-picker/dist/style.css";
-//import { useTaskContext } from "../Context/useTaskContext";
+
 
 //import { DayPicker } from "react-day-picker";
 
@@ -14,8 +13,7 @@ import "react-day-picker/dist/style.css";
 
 
 
-export const Calendar = () => {
-  const [selected, setSelected] = useState();
+export const Calendar = ({selected, setSelected}) => {
   let footer = (
     <S.CalendarContentP> Выберите срок исполнения. </S.CalendarContentP>
   );

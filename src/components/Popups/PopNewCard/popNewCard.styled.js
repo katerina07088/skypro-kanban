@@ -202,7 +202,7 @@ export const CategoriesThemeOrange = styled.input`
 `;
 export const CategoriesThemeGreen = styled.input`
   display: inline-block;
-  display: none;
+ display: none;
 `;
 export const CategoriesThemePurple = styled.input`
   display: inline-block;
@@ -221,9 +221,10 @@ export const TopicPurple = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Purple};
-  ::after {
-    ${ActiveCategory};
-  }
+  opacity: ${({ active }) => active ? 1 : 0.4 };
+ 
+   
+  
 `;
 
 export const TopicOrange = styled.label`
@@ -239,9 +240,8 @@ export const TopicOrange = styled.label`
   line-height: 14.21px;
   white-space: nowrap;
   ${Orange};
-  ::after {
-    ${ActiveCategory};
-  }
+  opacity: ${({ active }) => active ? 1 : 0.4 };
+ 
 `;
 
 export const TopicGreen = styled.label`
@@ -257,7 +257,5 @@ export const TopicGreen = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Green};
-  &::after {
-    ${ActiveCategory};
-  }
+  opacity: ${({ active }) => active ? 1 : 0.4 };
 `;
