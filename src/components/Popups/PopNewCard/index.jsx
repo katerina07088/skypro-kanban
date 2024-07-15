@@ -23,8 +23,9 @@ export const PopNewCard = () => {
   const [newTaskData, setNewTaskData] = useState({
     title: "",
     topic:"",
-    description: "",
     status: "",
+    description: "",
+    date:""
   });
 
   const newCard = {      

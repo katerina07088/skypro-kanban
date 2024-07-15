@@ -16,13 +16,13 @@ export const getTasks = async (token) => {
 };
 
 //добавление задачи
-export const addTask= async (taskData, token) => {
+export const addTask= async (tasksData, token) => {
   const response = await fetch(apiUrl, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(taskData),
+    body: JSON.stringify(tasksData),
   });
 
   if (!response.ok) {
