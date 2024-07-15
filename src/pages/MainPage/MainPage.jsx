@@ -29,7 +29,7 @@ export const MainPage = ({ changeTheme, setChangeTheme }) => {
     // setTimeout(() => {
     //   setIsLoading(false);
     // }, 2000);
-  }, []);
+  }, [setTasks, user]);
 
   return (
     <Wrapper>

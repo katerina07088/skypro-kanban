@@ -2,10 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Calendar } from "../../Calendar/index.jsx";
 import * as S from "./popNewCard.styled.js";
 import { routes } from "../../../router/routers.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTaskContext } from "../../Context/useTaskContext.js";
 import { addTask } from "../../../api/tasks.js";
 import { useUserContext } from "../../Context/useUserContext.js";
+//import { format } from "date-fns";
+//import { ru } from "date-fns/locale";
 
 
 export const PopNewCard = () => {
@@ -14,11 +16,11 @@ export const PopNewCard = () => {
   const nav = useNavigate();
   const [error, setError] = useState("");
   const [date] = useState(new Date)
-  const [checked, setChecked] = useState(false);
+ // const [selected, setSelected] = useState();
 
-  const handleChecked = ()=>{
-    setChecked(!checked)
-  }
+  // const handleChecked = ()=>{
+  //   setChecked(!checked)
+  // }
 
   const [newTaskData, setNewTaskData] = useState({
     title: "",
@@ -36,6 +38,16 @@ export const PopNewCard = () => {
     date: date.toISOString(),    // ???
   };
 
+  // useEffect(() => {
+  //   if (selected) {
+  //     let result = format (selected, "dd.MM.yy", { locale: ru });
+  //     setNewTaskData({ ...newTaskData, date: `${result}` });
+  //   }
+  // }, [newTaskData, selected]);
+
+
+
+
   const addNewTask = async (e) => {
     e.preventDefault();
 
@@ -47,14 +59,14 @@ export const PopNewCard = () => {
       setError("Введите описание задачи");
       return;
     }
-    if (newTaskData.date === "") {
-      setError("Выберите срок исполнения");
-      return;
-    }
-    if (newTaskData.status === "") {
-      setError("Выберите статус задачи");
-      return;
-    }
+    // if (newTaskData.date === "") {
+    //   setError("Выберите срок исполнения");
+    //   return;
+    // }
+    // if (newTaskData.status === "") {
+    //   setError("Выберите статус задачи");
+    //   return;
+    // }
     try {
       await addTask(newCard, user.token).then((res) => {
         setTasks(res.tasks);
@@ -147,7 +159,7 @@ export const PopNewCard = () => {
               </S.CategoriesThemes>
             </S.Categories>
             {error && <p> {error}</p>}
-            <S.FormNewCreate onClick={addNewTask} id="btnCreate">
+            <S.FormNewCreate onClick={addNewTask}>
               Создать задачу
             </S.FormNewCreate>
           </S.PopNewCardContent>
