@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import {
-  Green,
-  Hover01,
-  Orange,
-  Purple,
-} from "../../../globalStyle.styled";
+import { Green, Hover01, Orange, Purple } from "../../../globalStyle.styled";
 
 export const PopNewCard = styled.div`
   //display:none;
@@ -197,16 +192,16 @@ export const CategoriesThemes = styled.form`
 export const CategoriesThemeOrange = styled.input`
   display: inline-block;
   display: none;
- 
 `;
 export const CategoriesThemeGreen = styled.input`
   display: inline-block;
- display: none;
+  display: none;
 `;
 export const CategoriesThemePurple = styled.input`
   display: inline-block;
   display: none;
 `;
+
 export const TopicPurple = styled.label`
   display: inline-block;
   width: auto;
@@ -220,10 +215,7 @@ export const TopicPurple = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Purple};
-  opacity: ${({ active }) => active ? 1 : 0.4 };
- 
-   
-  
+  opacity: ${({ active }) => (active ? 1 : 0.4)};
 `;
 
 export const TopicOrange = styled.label`
@@ -239,8 +231,7 @@ export const TopicOrange = styled.label`
   line-height: 14.21px;
   white-space: nowrap;
   ${Orange};
-  opacity: ${({ active }) => active ? 1 : 0.4 };
- 
+  opacity: ${({ active }) => (active ? 1 : 0.4)};
 `;
 
 export const TopicGreen = styled.label`
@@ -256,10 +247,9 @@ export const TopicGreen = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Green};
+  opacity: ${({ active }) => (active ? 1 : 0.4)};
+`;
 
-  /* ${({ $topicColor }) => $topicColor === "Web Design" && Orange}
+/* ${({ $topicColor }) => $topicColor === "Web Design" && Orange}
   ${({ $topicColor }) => $topicColor === "Copywriting" && Green}
   ${({ $topicColor }) => $topicColor === "Research" && Purple} */
-
-  opacity: ${({ active }) => active ? 1 : 0.4 };
-`;
