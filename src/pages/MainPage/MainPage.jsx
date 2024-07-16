@@ -10,7 +10,7 @@ import { useTaskContext } from "../../components/Context/useTaskContext";
 
 export const MainPage = ({ changeTheme, setChangeTheme }) => {
   const { user, setUser } = useUserContext();
-  const {tasks, setTasks} = useTaskContext();
+  const { tasks, setTasks } = useTaskContext();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 

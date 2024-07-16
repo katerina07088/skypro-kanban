@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {
-  ActiveCategory,
   Green,
   Hover01,
   Orange,
@@ -257,5 +256,10 @@ export const TopicGreen = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Green};
+
+  /* ${({ $topicColor }) => $topicColor === "Web Design" && Orange}
+  ${({ $topicColor }) => $topicColor === "Copywriting" && Green}
+  ${({ $topicColor }) => $topicColor === "Research" && Purple} */
+
   opacity: ${({ active }) => active ? 1 : 0.4 };
 `;
