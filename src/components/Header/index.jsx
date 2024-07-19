@@ -13,7 +13,6 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
     setIsOpen(!isOpen);
   };
 
- 
   const onChangeTheme = () => {
     setChangeTheme(changeTheme === "light" ? "dark" : "light");
   };
@@ -40,7 +39,7 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
 
             <S.HeaderUser onClick={toggleOpenUser}>{user.name}</S.HeaderUser>
             {isOpen && (
-              <S.HeaderPopUserSet id="user-set-target">
+              <S.HeaderPopUserSet readOnly id="user-set-target">
                 {/* <!-- <a href="">x</a> --> */}
                 <S.PopUserSetName>{user.name}</S.PopUserSetName>
                 <S.PopUserSetMail>{user.email}</S.PopUserSetMail>

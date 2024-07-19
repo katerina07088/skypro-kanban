@@ -5,7 +5,7 @@ import { useUserContext } from "../../Context/useUserContext";
 
 export const PopUser = () => {
   const { logout } = useUserContext();
- // const nav = useNavigate();
+  // const nav = useNavigate();
   // const handleLogout = () => {
   //   setUser (false)
   //   nav(routes.login)
@@ -20,7 +20,9 @@ export const PopUser = () => {
           </div>
           <S.PopExitForm id="formExit" action="#">
             <S.PopExitFormGroup>
-              <S.PopExitExitYes id="exitYes" onClick={logout}> Да, выйти
+              <S.PopExitExitYes id="exitYes" onClick={logout}>
+                {" "}
+                Да, выйти
               </S.PopExitExitYes>
               <S.PopExitExitNo id="exitNo">
                 <Link to={routes.main}> Нет, остаться</Link>

@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { HeaderBackground, HeaderPopUserSetBackground, HeaderUserColor, Hover01, Hover02, Hover03 } from "../../globalStyle.styled";
+import {
+  HeaderBackground,
+  HeaderPopUserSetBackground,
+  HeaderUserColor,
+  Hover01,
+  Hover02,
+  Hover03,
+} from "../../globalStyle.styled";
 
 export const Header = styled.header`
   width: 100%;
@@ -18,16 +25,16 @@ export const HeaderBlock = styled.div`
   padding: 0 10px;
 `;
 export const HeaderLogoLight = styled.div`
-   img {
-    width: 85px;
-  } 
- `;
- export const HeaderLogoDark = styled.div`
   img {
-   width: 85px;
+    width: 85px;
+  }
+`;
+export const HeaderLogoDark = styled.div`
+  img {
+    width: 85px;
   }
   display: none;
-`; 
+`;
 export const HeaderBtnMainNew = styled.button`
   width: 178px;
   height: 30px;
@@ -90,7 +97,7 @@ export const HeaderPopUserSet = styled.div`
   height: 205px;
   border-radius: 10px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
- ${HeaderPopUserSetBackground}
+  ${HeaderPopUserSetBackground}
   box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
   padding: 34px;
   text-align: center;
