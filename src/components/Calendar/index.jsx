@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
 import "react-day-picker/dist/style.css";
 
-
 //import { DayPicker } from "react-day-picker";
 
 // export function MyDatePicker() {
@@ -11,16 +10,17 @@ import "react-day-picker/dist/style.css";
 //   return <DayPicker mode="single" selected={selected} onSelect={setSelected} />;
 // }
 
-
-
-export const Calendar = ({selected, setSelected}) => {
+export const Calendar = ({ selected, setSelected }) => {
   let footer = (
     <S.CalendarContentP> Выберите срок исполнения. </S.CalendarContentP>
   );
   if (selected) {
     footer = (
       <S.CalendarContentP>
-        Срок исполнения: <S.SelectedDate>{format(selected, "dd.MM.yy", { locale: ru })}.</S.SelectedDate> 
+        Срок исполнения:{" "}
+        <S.SelectedDate>
+          {format(selected, "dd.MM.yy", { locale: ru })}.
+        </S.SelectedDate>
       </S.CalendarContentP>
     );
   }

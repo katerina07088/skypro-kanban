@@ -1,17 +1,24 @@
-import { createContext, useEffect } from 'react';
-import { useUser } from '../hooks/useUser';
+import { createContext, useEffect, useState } from "react";
+import { getUserFromLocalStorage } from "../../utils/getDataFromStorage";
 
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  //const [user, setUser] = useState(getUserFromLocalStorage());
-const {user, login, logout} = useUser();
+  const [user, setUser] = useState(getUserFromLocalStorage());
+  const login = (userData) => {
+    setUser(userData);
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(user));
     } else {
-      localStorage.removeItem('user');
+      localStorage.removeItem("user");
     }
   }, [user]);
 

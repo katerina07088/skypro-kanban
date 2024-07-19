@@ -30,7 +30,7 @@ export const PopNewCard = () => {
   const newCard = {
     title: newTaskData.title,
     topic: newTaskData.topic,
-    status: newTaskData.status,
+    //status: newTaskData.status,
     description: newTaskData.description.trim() || "",
     date: selected,
   };
@@ -46,11 +46,11 @@ export const PopNewCard = () => {
       setError("Введите описание задачи");
       return;
     }
-    if (newTaskData.date === "") {
+    if (newTaskData.date === selected) {
       setError("Выберите срок исполнения");
       return;
     }
-    if (newTaskData.status === "") {
+    if (newTaskData.topic === "") {
       setError("Выберите статус задачи");
       return;
     }
@@ -65,7 +65,7 @@ export const PopNewCard = () => {
   };
 
   return (
-    <S.PopNewCard id="popNewCard">
+    <S.PopNewCard>
       <S.PopNewCardContainer>
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
@@ -74,7 +74,7 @@ export const PopNewCard = () => {
               <S.PopNewCardClose>&#10006;</S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
-              <S.PopNewCardForm id="formNewCard" action="#">
+              <S.PopNewCardForm >
                 <S.FormNewBlock>
                   <S.SubTtl htmlFor="formTitle">Название задачи</S.SubTtl>
                   <S.FormNewInput
@@ -105,7 +105,6 @@ export const PopNewCard = () => {
                   ></S.FormNewArea>
                 </S.FormNewBlock>
               </S.PopNewCardForm>
-
               <Calendar selected={selected} setSelected={setSelected} />
             </S.PopNewCardWrap>
             <S.Categories>
