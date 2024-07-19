@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import * as S from "./card.styled.js";
+import { format, isValid } from "date-fns";
+
+
 
 export const Card = ({ title, topic, date, id }) => {
+
+  const dateObj = new Date(date);
+  const formattedDate = isValid(dateObj) ? format(dateObj, 'dd.MM.yy') : 'Invalid date';
   return (
     <S.CardItem>
       <S.Card>
@@ -50,7 +56,7 @@ export const Card = ({ title, topic, date, id }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>{date}</p>
+            {formattedDate}
           </S.CardDate>
         </S.CardContent>
       </S.Card>

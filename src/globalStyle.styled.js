@@ -47,6 +47,11 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
+  
+  @media screen and (max-width: 495px)  {
+    width: 100%;
+    padding: 0 16px;
+  }
 `;
 
 export const HeaderBackground = css`
@@ -73,6 +78,10 @@ export const Gray = css`
   background: ${({ theme }) => theme.greyBg};
   color: ${({ theme }) => theme.greyText};
 `;
+
+// export const ActiveCategory = css`
+// opacity: 1 !important;
+// `;
 
 // export const Logo = css`
 // background-image: ${({theme}) => theme.logo};
@@ -123,3 +132,8 @@ export const Hover03 = css`
     }
   }
 `;
+
+
+// export const TopicColor = css`
+ 
+//  `;
