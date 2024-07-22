@@ -68,7 +68,9 @@ export const StyledDayPicker = styled(DayPicker)`
   p {
     width: 100%;
   }
-
+.rdp-day_today{
+  background: #EAEEF6;
+}
   /* --rdp-cell-size: 42px;
     --rdp-caption-font-size: 14px;
     --rdp-accent-color: #0000ff;

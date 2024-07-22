@@ -74,7 +74,7 @@ export const PopNewCard = () => {
               <S.PopNewCardClose>&#10006;</S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
-              <S.PopNewCardForm >
+              <S.PopNewCardForm>
                 <S.FormNewBlock>
                   <S.SubTtl htmlFor="formTitle">Название задачи</S.SubTtl>
                   <S.FormNewInput
