@@ -16,12 +16,48 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
   const nav = useNavigate();
   const [error, setError] = useState("");
   const [isEdit, setIsEdit] = useState(false);
-  // const [editCard, setEditCard] = useState({
-  //   status: "",
-  //   description: "",
-  //   date: "",
-  // });
-  //const [isLoading, setIsLoading] = useState(true);
+
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
+
+
+
+   const [editCard, setEditCard] = useState({
+    status: "",
+    description: "",
+    date: "",
+  });
+
+  const editedCard = {
+    title: editTaskData.title,
+   // topic: editTaskData.topic,
+    status: editTaskData.status,
+    description: editTaskData.description.trim() || "",
+    date: selected,
+  };
+
+
+  // const editTask = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await editCard({id,
+  //     token: user.token,
+  //     title: editedTask.title,
+  //     topic: editedTask.topic,
+  //     status: editedTask.status,
+  //     description: editedTask.description,
+  //     date: selected,
+  //     }).then((res) => {
+  //       returnTasks(res.taskData);
+  //       nav(routes.main);
+  //     });
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
+
+
 
   // if (cards.length) {
   //   cardtitle = cards.find((card) => card._id === cardId).title;
@@ -31,17 +67,6 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
   //   carddate = cards.find((card) => card._id === cardId).date;
   // }
 
-  const deleteTask = async (e) => {
-    e.preventDefault();
-    try {
-      await deleteCard({ id }, user.token).then((res) => {
-        setTasks(res.tasks);
-        nav(routes.main);
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
 
   // const settheTask = async (e) => {
   //   try {
@@ -62,28 +87,21 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
 
   // const card = cards.find(card => card._id === id);
 
-  // const editTask = async (e) => {
-  //   e.preventDefault();
-  const handleEdit = () => {
-    setIsEdit(!isEdit);
+
+
+  const deleteTask = async (e) => {
+    e.preventDefault();
+    try {
+      await deleteCard({ id }, user.token).then((res) => {
+        setTasks(res.tasks);
+        nav(routes.main);
+      });
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
-  //   try {
-  //     await editCard({id,
-  //     token: user.token,
-  //     title: editedTask.title,
-  //     topic: editedTask.topic,
-  //     status: editedTask.status,
-  //     description: editedTask.description,
-  //     date: selected,
-  //     }).then((res) => {
-  //       returnTasks(res.taskData);
-  //       nav(routes.main);
-  //     });
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
+
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -96,6 +114,7 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
               <S.CategoriesTheme $color={topic}>
                 <p>Web design</p>
               </S.CategoriesTheme>
+
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusTtl>Статус</S.PopBrowseStatusTtl>
@@ -139,7 +158,7 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
                   <S.FormBrowseArea
                     name="text"
                     id="textArea01"
-                    readOnly
+                    //readOnly
                     placeholder="Введите описание задачи..."
                   ></S.FormBrowseArea>
                 </S.FormBrowseBlock>
@@ -148,12 +167,13 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
               <Calendar selected={selected} setSelected={setSelected} />
             </S.PopBrowseWrap>
 
-            <div className="theme-down__categories theme-down">
+            {/* <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__theme _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
-            </div>
+            </div> */}
+
             {!isEdit ? (
               <S.BtnBrowse>
                 <S.BntGroup>
