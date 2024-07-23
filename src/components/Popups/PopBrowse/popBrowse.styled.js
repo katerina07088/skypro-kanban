@@ -190,7 +190,7 @@ export const FormBrowseBlock = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const FormBrowseArea = styled.area`
+export const FormBrowseArea = styled.textarea`
   max-width: 370px;
   width: 100%;
   outline: none;

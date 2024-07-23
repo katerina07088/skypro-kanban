@@ -33,6 +33,7 @@ export const Calendar = ({ selected, setSelected }) => {
         onSelect={setSelected}
         footer={footer}
         locale={ru}
+       // disabled= {disabled}
       />
     </S.Calendar>
   );

@@ -1,5 +1,5 @@
 const apiUrl = "https://wedev-api.sky.pro/api/kanban";
-const apiUrlOfOneTask = "https://wedev-api.sky.pro/api/kanban/:id"
+const apiUrlOfOneTask = "https://wedev-api.sky.pro/api/kanban/"
 
 //получение всех задач
 export const getTasks = async (token) => {
@@ -46,8 +46,8 @@ export const getCardById = async (token, taskData) => {
   };
 
 // редактирование задачи
-export const editCard = async ( id, token, { title, topic, status, description, date }) => {
-    const response = await fetch(apiUrlOfOneTask + '/' + id, {
+export const editCard = async ( token, id, title, topic, status, description, date) => {
+    const response = await fetch(apiUrlOfOneTask + id, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -68,13 +68,12 @@ export const editCard = async ( id, token, { title, topic, status, description, 
 
 
 //удаление задачи
-export const deleteCard = async (token, tasksData, id) => {
-    const response = await fetch(apiUrlOfOneTask + '/' + id, {
+export const deleteCard = async (token, id) => {
+    const response = await fetch(apiUrlOfOneTask + id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(tasksData)
     });
     if (!response.ok) {
       throw new Error("Не удалось найти задачу");

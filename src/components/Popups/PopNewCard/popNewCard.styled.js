@@ -253,7 +253,7 @@ export const TopicOrange = styled.label`
   line-height: 14.21px;
   white-space: nowrap;
   ${Orange};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 export const TopicGreen = styled.label`

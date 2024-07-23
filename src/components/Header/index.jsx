@@ -46,7 +46,7 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
                   <input
-                    checked={changeTheme === "dark"}
+                    defaultChecked={changeTheme === "dark"}
                     onClick={onChangeTheme}
                     type="checkbox"
                     className="checkbox"
@@ -54,10 +54,9 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
                   />
                 </S.PopUserSetTheme>
                 <S.BtnExit>
-                  <S.BtnExit>
                     <Link to={routes.exit}> Выйти </Link>
                   </S.BtnExit>
-                </S.BtnExit>
+               
               </S.HeaderPopUserSet>
             )}
           </S.HeaderNav>

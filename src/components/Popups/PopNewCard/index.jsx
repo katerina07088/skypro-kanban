@@ -121,7 +121,7 @@ export const PopNewCard = () => {
                   id="orangeTopic"
                 />
                 <S.TopicOrange
-                  active={newTaskData.topic === "Web Design"}
+                  $active={newTaskData.topic === "Web Design"}
                   htmlFor="orangeTopic"
                 >
                   {" "}

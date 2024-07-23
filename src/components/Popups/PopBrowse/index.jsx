@@ -2,97 +2,49 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { routes } from "../../../router/routers";
 import { Calendar } from "../../Calendar";
 import * as S from "./popBrowse.styled";
-import { useState } from "react";
-import { deleteCard } from "../../../api/tasks";
+import { useEffect, useState } from "react";
+import { deleteCard, editCard } from "../../../api/tasks";
 import { useUserContext } from "../../Context/useUserContext";
 import { useTaskContext } from "../../Context/useTaskContext";
 
-export const PopBrowse = ({ selected, setSelected, topic }) => {
+export const PopBrowse = () => {
   //const [date, setDate]  = useState(New Date())
   const { id } = useParams();
   const { user } = useUserContext();
-  const { setTasks } = useTaskContext();
-  //const { setTask } = useTaskContext();
+  const { setTasks, tasks } = useTaskContext();
   const nav = useNavigate();
   const [error, setError] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [selected, setSelected] = useState(null)
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
   };
 
-
-
-   const [editCard, setEditCard] = useState({
+   const [editTaskData, setEditTaskData] = useState({
     status: "",
     description: "",
-    date: "",
+    title: "",
+    topic: ""
   });
 
-  const editedCard = {
-    title: editTaskData.title,
-   // topic: editTaskData.topic,
-    status: editTaskData.status,
-    description: editTaskData.description.trim() || "",
-    date: selected,
+
+  const addEditTask = async (e) => {
+        e.preventDefault();
+    try {
+      await editCard (user.token, editTaskData ).then((res) => {
+       setTasks(res);
+       nav(routes.main);
+      });
+    } catch (error) {
+      setError(error.message);
+    }
   };
-
-
-  // const editTask = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await editCard({id,
-  //     token: user.token,
-  //     title: editedTask.title,
-  //     topic: editedTask.topic,
-  //     status: editedTask.status,
-  //     description: editedTask.description,
-  //     date: selected,
-  //     }).then((res) => {
-  //       returnTasks(res.taskData);
-  //       nav(routes.main);
-  //     });
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
-
-
-  // if (cards.length) {
-  //   cardtitle = cards.find((card) => card._id === cardId).title;
-  //   cardtopic = cards.find((card) => card._id === cardId).topic;
-  //   cardstatus = cards.find((card) => card._id === cardId).status;
-  //   carddescription = cards.find((card) => card._id === cardId).description;
-  //   carddate = cards.find((card) => card._id === cardId).date;
-  // }
-
-
-  // const settheTask = async (e) => {
-  //   try {
-  //    await  getCardById(id, user.token).then((res) => {
-  //   const task =  {
-  //   title: res.title,
-  //   topic: res.topic,
-  //   date: selected,
-  //   description: res.description,
-  //   status: res.status,
-  //   }
-  //      // setTask(res.task)
-  //     });
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
-  // const card = cards.find(card => card._id === id);
-
-
 
   const deleteTask = async (e) => {
     e.preventDefault();
     try {
-      await deleteCard({ id }, user.token).then((res) => {
+      await deleteCard( user.token, id ).then((res) => {
         setTasks(res.tasks);
         nav(routes.main);
       });
@@ -102,6 +54,23 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
   };
 
 
+  useEffect(() => {
+if (tasks.length) {
+ const task = tasks.find(t => t._id === id);
+ if(!task) {
+ return nav(routes.main)
+ }
+ console.log(task)
+setEditTaskData({
+  ...editTaskData, title:task.title,
+  topic: task.topic,
+  description:task.description,
+  status: task.status
+})
+setSelected(new Date(task.date))
+}}, [tasks])
+
+
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -109,10 +78,10 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
         <S.PopBrowseBlock>
           <S.PopBrowseContent>
             <S.PopBrowseTopBlock>
-              <S.PopBrowseTtl> Название задачи {id} </S.PopBrowseTtl>
+              <S.PopBrowseTtl> {editTaskData.title} </S.PopBrowseTtl>
 
-              <S.CategoriesTheme $color={topic}>
-                <p>Web design</p>
+              <S.CategoriesTheme $color={editTaskData.topic}>
+                <p>{editTaskData.topic}</p>
               </S.CategoriesTheme>
 
             </S.PopBrowseTopBlock>
@@ -139,7 +108,7 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
               ) : (
                 <S.StatusThemes>
                   <S.StatusThemeOriginal>
-                    <p>Без статуса</p>
+                    <p>{editTaskData.status}</p>
                   </S.StatusThemeOriginal>
                 </S.StatusThemes>
               )}
@@ -155,10 +124,13 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
                   <label htmlFor="textArea01" className="subttl">
                     Описание задачи
                   </label>
-                  <S.FormBrowseArea
-                    name="text"
-                    id="textArea01"
-                    //readOnly
+                  <S.FormBrowseArea  onChange={(e) =>
+                    setEditTaskData({ ...editTaskData, description: e.target.value })
+                  }
+                  name="text"
+                  value={editTaskData.description}
+                  id="textArea01"
+                  readOnly = {!isEdit}
                     placeholder="Введите описание задачи..."
                   ></S.FormBrowseArea>
                 </S.FormBrowseBlock>
@@ -188,7 +160,7 @@ export const PopBrowse = ({ selected, setSelected, topic }) => {
             ) : (
               <S.BtnBrowse className="pop-browse__btn-edit ">
                 <S.BntGroup>
-                  <S.Btn> Сохранить </S.Btn>
+                  <S.Btn onClick={addEditTask} > Сохранить </S.Btn>
                   <S.Btn onClick={handleEdit}> Отменить </S.Btn>
                   <S.Btn onClick={deleteTask}>Удалить задачу</S.Btn>{" "}
                 </S.BntGroup>
