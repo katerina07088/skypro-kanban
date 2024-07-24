@@ -126,18 +126,24 @@ export const StatusThemes = styled.div`
   justify-content: flex-start;
 `;
 
-export const StatusTheme = styled.div`
+export const StatusTheme = styled.input`
+  display: inline-block;
+  display: none;
+`;
+
+export const StatusP = styled.label`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94a6be;
+  //color: #94a6be;
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  p {
-    font-size: 14px;
-    line-height: 1;
-    letter-spacing: -0.14px;
-  }
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+
+  background: ${({ $active }) => ($active ? "#94A6BE" : "")};
+  color: ${({ $active }) => ($active ? "#FFFFFF" : "#94a6be")};
 `;
 
 export const StatusThemeOriginal = styled.div`

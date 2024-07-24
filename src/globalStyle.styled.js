@@ -78,10 +78,13 @@ export const Gray = css`
   background: ${({ theme }) => theme.greyBg};
   color: ${({ theme }) => theme.greyText};
 `;
+export const LightGray = css`
+  background: ${({ theme }) => theme.lightGreyBg};
+  color: ${({ theme }) => theme.lightGrayText};
+`;
 
-// export const ActiveCategory = css`
-// opacity: 1 !important;
-// `;
+
+
 
 // export const Logo = css`
 // background-image: ${({theme}) => theme.logo};

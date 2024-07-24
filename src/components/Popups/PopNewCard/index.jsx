@@ -64,6 +64,9 @@ export const PopNewCard = () => {
     }
   };
 
+
+
+  
   return (
     <S.PopNewCard>
       <S.PopNewCardContainer>
@@ -138,7 +141,7 @@ export const PopNewCard = () => {
                   id="greenTopic"
                 />
                 <S.TopicGreen
-                  active={newTaskData.topic === "Research"}
+                  $active={newTaskData.topic === "Research"}
                   htmlFor="greenTopic"
                 >
                   {" "}
@@ -155,7 +158,7 @@ export const PopNewCard = () => {
                   id="purpleTopic"
                 />
                 <S.TopicPurple
-                  active={newTaskData.topic === "Copywriting"}
+                  $active={newTaskData.topic === "Copywriting"}
                   htmlFor="purpleTopic"
                 >
                   {" "}

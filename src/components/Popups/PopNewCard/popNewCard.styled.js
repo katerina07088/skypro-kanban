@@ -237,7 +237,7 @@ export const TopicPurple = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Purple};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 export const TopicOrange = styled.label`
@@ -269,7 +269,7 @@ export const TopicGreen = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Green};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 /* ${({ $topicColor }) => $topicColor === "Web Design" && Orange}

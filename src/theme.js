@@ -13,6 +13,8 @@ titleColorCard: "#000000",
 backgroundColorHeader: "#ffffff",
 userColor: "#565eef",
 headerPopUserSetBackground:"#ffffff",
+lightGreyText: "#94a6be",
+lightGreyBg: "#FFFFFF"
 //logo: "./images/logo.png",
 //popUserSetName: "#000",
 }
@@ -25,12 +27,14 @@ greyText: "#94A6BE",
 orangeBg: "#FF6D00",
 greenBg: "#06B16E",
 purpleBg: "#9A48F1",
-greyBg: "#FFFFFF",
+greyBg: "transparent",
 backgroundCard: "#20202C",
-titleColorCard:  "#FFFFFF",
+titleColorCard: "#FFFFFF",
 backgroundColorHeader: "#20202C",
 userColor: "#FFFFFF",
 headerPopUserSetBackground:"#202229",
+lightGreyText: "#20202C",
+lightGreyBg: "#94A6BE"
 //logo: "./images/logo_dark.png",
 //popUserSetName:"#FFFFFF"
 }

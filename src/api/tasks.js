@@ -46,7 +46,7 @@ export const getCardById = async (token, taskData) => {
   };
 
 // редактирование задачи
-export const editCard = async ( token, id, title, topic, status, description, date) => {
+export const editCard = async (token, id, title, topic, status, description, date ) => {
     const response = await fetch(apiUrlOfOneTask + id, {
       method: "PUT",
       headers: {
@@ -61,7 +61,7 @@ export const editCard = async ( token, id, title, topic, status, description, da
     })
     });
     if (!response.ok) {
-      throw new Error("Не удалось найти задачу");
+      throw new Error("Не удалось редактировать задачу");
     }
     return response.json();
   };

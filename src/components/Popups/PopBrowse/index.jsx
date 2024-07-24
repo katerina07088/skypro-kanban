@@ -15,26 +15,25 @@ export const PopBrowse = () => {
   const nav = useNavigate();
   const [error, setError] = useState("");
   const [isEdit, setIsEdit] = useState(false);
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState(null);
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
   };
 
-   const [editTaskData, setEditTaskData] = useState({
+  const [editTaskData, setEditTaskData] = useState({
     status: "",
     description: "",
     title: "",
-    topic: ""
+    topic: "",
   });
 
-
   const addEditTask = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
     try {
-      await editCard (user.token, editTaskData ).then((res) => {
-       setTasks(res);
-       nav(routes.main);
+      await editCard(user.token, editTaskData).then((res) => {
+        setTasks(res);
+        nav(routes.main);
       });
     } catch (error) {
       setError(error.message);
@@ -44,7 +43,7 @@ export const PopBrowse = () => {
   const deleteTask = async (e) => {
     e.preventDefault();
     try {
-      await deleteCard( user.token, id ).then((res) => {
+      await deleteCard(user.token, id).then((res) => {
         setTasks(res.tasks);
         nav(routes.main);
       });
@@ -53,24 +52,23 @@ export const PopBrowse = () => {
     }
   };
 
-
   useEffect(() => {
-if (tasks.length) {
- const task = tasks.find(t => t._id === id);
- if(!task) {
- return nav(routes.main)
- }
- console.log(task)
-setEditTaskData({
-  ...editTaskData, title:task.title,
-  topic: task.topic,
-  description:task.description,
-  status: task.status
-})
-setSelected(new Date(task.date))
-}}, [tasks])
-
-
+    if (tasks.length) {
+      const task = tasks.find((t) => t._id === id);
+      if (!task) {
+        return nav(routes.main);
+      }
+      console.log(task);
+      setEditTaskData({
+        ...editTaskData,
+        title: task.title,
+        topic: task.topic,
+        description: task.description,
+        status: task.status,
+      });
+      setSelected(new Date(task.date));
+    }
+  }, [tasks]);
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -83,27 +81,90 @@ setSelected(new Date(task.date))
               <S.CategoriesTheme $color={editTaskData.topic}>
                 <p>{editTaskData.topic}</p>
               </S.CategoriesTheme>
-
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusTtl>Статус</S.PopBrowseStatusTtl>
               {isEdit ? (
                 <S.StatusThemes>
-                  <S.StatusTheme>
-                    <p>Без статуса</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
-                    <p>Нужно сделать</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
-                    <p>В работе</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
-                    <p>Тестирование</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
-                    <p>Готово</p>
-                  </S.StatusTheme>
+                  <S.StatusTheme
+                    onChange={(e) =>
+                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                    }
+                    name="status"
+                    type="radio"
+                    value="Без статуса"
+                    id="noStatus"
+                  />
+                    <S.StatusP
+                      $active={editTaskData.status === "Без статуса"}
+                      htmlFor="noStatus"
+                    >
+                      Без статуса
+                    </S.StatusP>
+                 
+                  <S.StatusTheme
+                    onChange={(e) =>
+                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                    }
+                    name="status"
+                    type="radio"
+                    value="Нужно Сделать"
+                    id="needToDo"
+                  />
+                    <S.StatusP
+                      $active={editTaskData.status === "Нужно Сделать"}
+                      htmlFor="needToDo"
+                    >
+                      Нужно сделать
+                    </S.StatusP>
+                 
+                  <S.StatusTheme
+                    onChange={(e) =>
+                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                    }
+                    name="status"
+                    type="radio"
+                    value="В работе"
+                    id="inWork"
+                  />
+                    <S.StatusP
+                      $active={editTaskData.status === "В работе"}
+                      htmlFor="inWork"
+                    >
+                      В работе
+                    </S.StatusP>
+                
+                  <S.StatusTheme
+                    onChange={(e) =>
+                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                    }
+                    name="status"
+                    type="radio"
+                    value="Тестирование"
+                    id="testing"
+                  />
+                    <S.StatusP
+                      $active={editTaskData.status === "Тестирование"}
+                      htmlFor="testing"
+                    >
+                      Тестирование
+                    </S.StatusP>
+                
+                  <S.StatusTheme
+                    onChange={(e) =>
+                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                    }
+                    name="status"
+                    type="radio"
+                    value="Готово"
+                    id="ready"
+                  />
+                    <S.StatusP
+                      $active={editTaskData.status === "Готово"}
+                      htmlFor="ready"
+                    >
+                      Готово
+                    </S.StatusP>
                 </S.StatusThemes>
               ) : (
                 <S.StatusThemes>
@@ -124,13 +185,17 @@ setSelected(new Date(task.date))
                   <label htmlFor="textArea01" className="subttl">
                     Описание задачи
                   </label>
-                  <S.FormBrowseArea  onChange={(e) =>
-                    setEditTaskData({ ...editTaskData, description: e.target.value })
-                  }
-                  name="text"
-                  value={editTaskData.description}
-                  id="textArea01"
-                  readOnly = {!isEdit}
+                  <S.FormBrowseArea
+                    onChange={(e) =>
+                      setEditTaskData({
+                        ...editTaskData,
+                        description: e.target.value,
+                      })
+                    }
+                    name="text"
+                    value={editTaskData.description}
+                    id="textArea01"
+                    readOnly={!isEdit}
                     placeholder="Введите описание задачи..."
                   ></S.FormBrowseArea>
                 </S.FormBrowseBlock>
@@ -160,7 +225,7 @@ setSelected(new Date(task.date))
             ) : (
               <S.BtnBrowse className="pop-browse__btn-edit ">
                 <S.BntGroup>
-                  <S.Btn onClick={addEditTask} > Сохранить </S.Btn>
+                  <S.Btn onClick={addEditTask}> Сохранить </S.Btn>
                   <S.Btn onClick={handleEdit}> Отменить </S.Btn>
                   <S.Btn onClick={deleteTask}>Удалить задачу</S.Btn>{" "}
                 </S.BntGroup>
