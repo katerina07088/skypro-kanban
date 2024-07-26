@@ -126,12 +126,12 @@ export const StatusThemes = styled.div`
   justify-content: flex-start;
 `;
 
-export const StatusTheme = styled.input`
+export const StatusInput = styled.input`
   display: inline-block;
   display: none;
 `;
 
-export const StatusP = styled.label`
+export const StatusTheme = styled.label`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   //color: #94a6be;

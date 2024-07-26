@@ -24,6 +24,7 @@ export const Calendar = styled.div`
 
 export const StyledDayPicker = styled(DayPicker)`
 
+  
   margin: 0 0px;
   background-color: #ffffff;
   color: #94a6be;
@@ -71,6 +72,17 @@ export const StyledDayPicker = styled(DayPicker)`
 .rdp-day_today{
   background: #EAEEF6;
 }
+
+.rdp-button:disabled{
+  opacity: 1;
+}
+
+.rdp-day_selected{
+  background: #EAEEF6;
+}
+
+
+
   /* --rdp-cell-size: 42px;
     --rdp-caption-font-size: 14px;
     --rdp-accent-color: #0000ff;

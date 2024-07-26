@@ -10,7 +10,7 @@ import "react-day-picker/dist/style.css";
 //   return <DayPicker mode="single" selected={selected} onSelect={setSelected} />;
 // }
 
-export const Calendar = ({ selected, setSelected }) => {
+export const Calendar = ({ selected, setSelected, disabled }) => {
   let footer = (
     <S.CalendarContentP> Выберите срок исполнения. </S.CalendarContentP>
   );
@@ -33,7 +33,7 @@ export const Calendar = ({ selected, setSelected }) => {
         onSelect={setSelected}
         footer={footer}
         locale={ru}
-       // disabled= {disabled}
+        disabled= {disabled}
       />
     </S.Calendar>
   );

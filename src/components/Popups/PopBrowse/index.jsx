@@ -31,8 +31,8 @@ export const PopBrowse = () => {
   const addEditTask = async (e) => {
     e.preventDefault();
     try {
-      await editCard(user.token, editTaskData).then((res) => {
-        setTasks(res);
+      await editCard(user.token, id, editTaskData).then((res) => {
+        setTasks(res.tasks);
         nav(routes.main);
       });
     } catch (error) {
@@ -69,14 +69,27 @@ export const PopBrowse = () => {
       setSelected(new Date(task.date));
     }
   }, [tasks]);
-
+ 
   return (
     <S.PopBrowse id="popBrowse">
       <S.PopBrowseContainer>
         <S.PopBrowseBlock>
           <S.PopBrowseContent>
             <S.PopBrowseTopBlock>
-              <S.PopBrowseTtl> {editTaskData.title} </S.PopBrowseTtl>
+              <S.PopBrowseTtl  
+                onChange={(e) =>
+                  setEditTaskData({
+                    ...editTaskData,
+                    title: e.target.value,
+                  })
+                }
+                type="text"
+                name="name"
+                value={editTaskData.title}
+               // readOnly={!isEdit}
+              >
+                {editTaskData.title}{" "}
+              </S.PopBrowseTtl>
 
               <S.CategoriesTheme $color={editTaskData.topic}>
                 <p>{editTaskData.topic}</p>
@@ -86,85 +99,108 @@ export const PopBrowse = () => {
               <S.PopBrowseStatusTtl>Статус</S.PopBrowseStatusTtl>
               {isEdit ? (
                 <S.StatusThemes>
+                  
                   <S.StatusTheme
+                    $active={editTaskData.status === "Без статуса"}
+                    htmlFor="noStatus"
+                  >
+                    Без статуса
+                    <S.StatusInput
                     onChange={(e) =>
-                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                      setEditTaskData({
+                        ...editTaskData,
+                        status: e.target.value,
+                      })
                     }
                     name="status"
                     type="radio"
                     value="Без статуса"
                     id="noStatus"
                   />
-                    <S.StatusP
-                      $active={editTaskData.status === "Без статуса"}
-                      htmlFor="noStatus"
-                    >
-                      Без статуса
-                    </S.StatusP>
-                 
+                  </S.StatusTheme>
+
+                  
                   <S.StatusTheme
+                    $active={editTaskData.status === "Нужно Сделать"}
+                    htmlFor="needToDo"
+                  >
+                    Нужно сделать
+                    <S.StatusInput
                     onChange={(e) =>
-                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                      setEditTaskData({
+                        ...editTaskData,
+                        status: e.target.value,
+                      })
                     }
                     name="status"
                     type="radio"
                     value="Нужно Сделать"
                     id="needToDo"
                   />
-                    <S.StatusP
-                      $active={editTaskData.status === "Нужно Сделать"}
-                      htmlFor="needToDo"
-                    >
-                      Нужно сделать
-                    </S.StatusP>
-                 
+                  </S.StatusTheme>
+
+
+               
                   <S.StatusTheme
+                    $active={editTaskData.status === "В работе"}
+                    htmlFor="inWork"
+                  >
+                    В работе  
+                     <S.StatusInput
                     onChange={(e) =>
-                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                      setEditTaskData({
+                        ...editTaskData,
+                        status: e.target.value,
+                      })
                     }
                     name="status"
                     type="radio"
                     value="В работе"
                     id="inWork"
                   />
-                    <S.StatusP
-                      $active={editTaskData.status === "В работе"}
-                      htmlFor="inWork"
-                    >
-                      В работе
-                    </S.StatusP>
-                
+                  </S.StatusTheme>
+
+                  
                   <S.StatusTheme
+                    $active={editTaskData.status === "Тестирование"}
+                    htmlFor="testing"
+                  >
+                    Тестирование
+                    <S.StatusInput
                     onChange={(e) =>
-                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                      setEditTaskData({
+                        ...editTaskData,
+                        status: e.target.value,
+                      })
                     }
                     name="status"
                     type="radio"
                     value="Тестирование"
                     id="testing"
                   />
-                    <S.StatusP
-                      $active={editTaskData.status === "Тестирование"}
-                      htmlFor="testing"
-                    >
-                      Тестирование
-                    </S.StatusP>
-                
+                  </S.StatusTheme>
+
+
+                  
                   <S.StatusTheme
+                    $active={editTaskData.status === "Готово"}
+                    htmlFor="ready"
+                  >
+                    Готово
+                    <S.StatusInput
                     onChange={(e) =>
-                      setEditTaskData({ ...editTaskData, status: e.target.value })
+                      setEditTaskData({
+                        ...editTaskData,
+                        status: e.target.value,
+                      })
                     }
                     name="status"
                     type="radio"
                     value="Готово"
                     id="ready"
                   />
-                    <S.StatusP
-                      $active={editTaskData.status === "Готово"}
-                      htmlFor="ready"
-                    >
-                      Готово
-                    </S.StatusP>
+                  </S.StatusTheme>
+
                 </S.StatusThemes>
               ) : (
                 <S.StatusThemes>
@@ -201,7 +237,7 @@ export const PopBrowse = () => {
                 </S.FormBrowseBlock>
               </S.PopBrowseForm>
 
-              <Calendar selected={selected} setSelected={setSelected} />
+              <Calendar selected={selected} setSelected={setSelected} disabled={!isEdit} />
             </S.PopBrowseWrap>
 
             {/* <div className="theme-down__categories theme-down">
