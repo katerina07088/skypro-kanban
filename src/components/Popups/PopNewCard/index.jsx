@@ -64,9 +64,6 @@ export const PopNewCard = () => {
     }
   };
 
-
-
-  
   return (
     <S.PopNewCard>
       <S.PopNewCardContainer>
@@ -114,55 +111,55 @@ export const PopNewCard = () => {
               <S.CategoriesSubTtl>Категория</S.CategoriesSubTtl>
 
               <S.CategoriesThemes>
-                <S.CategoriesThemeOrange
-                  onChange={(e) =>
-                    setNewTaskData({ ...newTaskData, topic: e.target.value })
-                  }
-                  name="topic"
-                  type="radio"
-                  value="Web Design"
-                  id="orangeTopic"
-                />
                 <S.TopicOrange
                   $active={newTaskData.topic === "Web Design"}
                   htmlFor="orangeTopic"
                 >
                   {" "}
                   Web Design{" "}
+                  <S.CategoriesThemeOrange
+                    onChange={(e) =>
+                      setNewTaskData({ ...newTaskData, topic: e.target.value })
+                    }
+                    name="topic"
+                    type="radio"
+                    value="Web Design"
+                    id="orangeTopic"
+                  />
                 </S.TopicOrange>
 
-                <S.CategoriesThemeGreen
-                  onChange={(e) =>
-                    setNewTaskData({ ...newTaskData, topic: e.target.value })
-                  }
-                  name="topic"
-                  type="radio"
-                  value="Research"
-                  id="greenTopic"
-                />
                 <S.TopicGreen
                   $active={newTaskData.topic === "Research"}
                   htmlFor="greenTopic"
                 >
                   {" "}
                   Research{" "}
+                  <S.CategoriesThemeGreen
+                    onChange={(e) =>
+                      setNewTaskData({ ...newTaskData, topic: e.target.value })
+                    }
+                    name="topic"
+                    type="radio"
+                    value="Research"
+                    id="greenTopic"
+                  />
                 </S.TopicGreen>
 
-                <S.CategoriesThemePurple
-                  onChange={(e) =>
-                    setNewTaskData({ ...newTaskData, topic: e.target.value })
-                  }
-                  name="topic"
-                  type="radio"
-                  value="Copywriting"
-                  id="purpleTopic"
-                />
                 <S.TopicPurple
                   $active={newTaskData.topic === "Copywriting"}
                   htmlFor="purpleTopic"
                 >
                   {" "}
                   Copywriting{" "}
+                  <S.CategoriesThemePurple
+                    onChange={(e) =>
+                      setNewTaskData({ ...newTaskData, topic: e.target.value })
+                    }
+                    name="topic"
+                    type="radio"
+                    value="Copywriting"
+                    id="purpleTopic"
+                  />
                 </S.TopicPurple>
               </S.CategoriesThemes>
             </S.Categories>

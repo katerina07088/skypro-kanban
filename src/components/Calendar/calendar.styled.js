@@ -24,7 +24,7 @@ export const Calendar = styled.div`
 
 export const StyledDayPicker = styled(DayPicker)`
 
-  
+
   margin: 0 0px;
   background-color: #ffffff;
   color: #94a6be;
@@ -81,7 +81,10 @@ export const StyledDayPicker = styled(DayPicker)`
   background: #EAEEF6;
 }
 
-
+ @media screen and (max-width: 495px) {
+    width: 100%;
+  }
+  
 
   /* --rdp-cell-size: 42px;
     --rdp-caption-font-size: 14px;
@@ -110,3 +113,4 @@ export const SelectedDate = styled.span`
   color: black;
   font-family: Roboto;
   `
+ 

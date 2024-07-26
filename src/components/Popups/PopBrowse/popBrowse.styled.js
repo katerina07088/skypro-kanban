@@ -224,11 +224,21 @@ export const FormBrowseArea = styled.textarea`
     letter-spacing: -0.14px;
   }
 
+
+  
   @media screen and (max-width: 495px) {
     max-width: 100%;
     height: 37px;
   }
 `;
+
+export const TextArea = styled.label`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  `
+
 export const BtnBrowse = styled.div`
   display: flex;
   flex-wrap: wrap;
