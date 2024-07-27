@@ -54,6 +54,7 @@ export const PopBrowse = () => {
     e.preventDefault();
     try {
       await editCard(user.token, id, { editTaskData }).then((res) => {
+
         setTasks(res.tasks);
         nav(routes.main);
       });
@@ -124,7 +125,7 @@ export const PopBrowse = () => {
                   </S.StatusTheme>
 
                   <S.StatusTheme
-                    $active={editTaskData.status === "Нужно Сделать"}
+                    $active={editTaskData.status === "Нужно сделать"}
                     htmlFor="needToDo"
                   >
                     Нужно сделать
@@ -137,7 +138,7 @@ export const PopBrowse = () => {
                       }
                       name="status"
                       type="radio"
-                      value="Нужно Сделать"
+                      value="Нужно сделать"
                       id="needToDo"
                     />
                   </S.StatusTheme>

@@ -46,15 +46,13 @@ export const getCardById = async (token, taskData) => {
 };
 
 // редактирование задачи
-export const editCard = async (token, id, { taskData }) => {
+export const editCard = async (token, id, { editTaskData }) => {
   const response = await fetch(apiUrlOfOneTask + id, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      taskData,
-    }),
+    body: JSON.stringify(editTaskData),
   });
   if (!response.ok) {
     throw new Error("Не удалось редактировать задачу");
