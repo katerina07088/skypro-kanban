@@ -17,13 +17,12 @@ export const PopBrowse = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [selected, setSelected] = useState(null);
 
-   const [editTaskData, setEditTaskData] = useState({
+  const [editTaskData, setEditTaskData] = useState({
     status: "",
     description: "",
     title: "",
     topic: "",
   });
-
 
   useEffect(() => {
     if (tasks.length) {
@@ -43,18 +42,14 @@ export const PopBrowse = () => {
     }
   }, [tasks]);
 
-
-
- const handleEdit = () => {
+  const handleEdit = () => {
     setIsEdit(!isEdit);
   };
-
 
   const addEditTask = async (e) => {
     e.preventDefault();
     try {
       await editCard(user.token, id, { editTaskData }).then((res) => {
-
         setTasks(res.tasks);
         nav(routes.main);
       });
@@ -74,7 +69,6 @@ export const PopBrowse = () => {
       setError(error.message);
     }
   };
-
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -229,10 +223,6 @@ export const PopBrowse = () => {
               </S.PopBrowseForm>
 
               <Calendar
-                // selected={editTaskData.date}
-                // setSelected={(date) =>
-                //   setEditTaskData({ ...editTaskData, date })
-                // }
                 selected={selected}
                 setSelected={setSelected}
                 disabled={!isEdit}

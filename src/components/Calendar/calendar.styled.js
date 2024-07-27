@@ -13,18 +13,9 @@ export const Calendar = styled.div`
     width: 100%;
   }
 `;
-// export const CalendarTtl = styled.p`
-//  margin-bottom: 14px;
-//  padding: 0 7px;
-// `
 
-// export const CalendarContent = styled.div`
-//   margin-bottom: 12px;
-//  `
 
 export const StyledDayPicker = styled(DayPicker)`
-
-
   margin: 0 0px;
   background-color: #ffffff;
   color: #94a6be;
@@ -40,26 +31,15 @@ export const StyledDayPicker = styled(DayPicker)`
     line-height: 25px;
     font-weight: 600;
   }
- 
+
   .rdp-head_cell {
     color: #94a6be;
     font-size: 10px;
-    font-weight: 500;  
+    font-weight: 500;
   }
 
   .rdp-cell {
-    //width: 22px;
     height: 22px;
-    //margin: 2px;
-   // border-radius: 50%;
-    //flex-wrap: nowrap;
-    //align-items: center;
-    //justify-content: center;
-    //color: #94a6be;
-    //font-size: 10px;
-    //line-height: 1;
-    //letter-spacing: -0.2px;
-    //cursor: pointer;
   }
   .rdp-button_reset.rdp-button.rdp-day {
     width: 28px;
@@ -69,32 +49,20 @@ export const StyledDayPicker = styled(DayPicker)`
   p {
     width: 100%;
   }
-.rdp-day_today{
-  background: #EAEEF6;
-}
+  .rdp-day_today {
+    background: #eaeef6;
+    font-weight: normal;
+  }
 
-.rdp-button:disabled{
-  opacity: 1;
-}
-
-.rdp-day_selected{
-  background: #EAEEF6;
-}
-
- @media screen and (max-width: 495px) {
+  .rdp-day_selected {
+    background: #94a6be;
+  }
+  .rdp-button:disabled {
+    opacity: 1;
+  }
+  @media screen and (max-width: 495px) {
     width: 100%;
   }
-  
-
-  /* --rdp-cell-size: 42px;
-    --rdp-caption-font-size: 14px;
-    --rdp-accent-color: #0000ff;
-    --rdp-background-color: #e7edff;
-    --rdp-accent-color-dark: #3003e1;
-    --rdp-background-color-dark: #180270;
-    --rdp-outline: 2px solid var(--rdp-accent-color);
-    --rdp-outline-selected: 3px solid var(--rdp-accent-color);
-    --rdp-selected-color: #fff; */
 `;
 
 export const CalendarContentP = styled.p`
@@ -112,5 +80,4 @@ export const CalendarContentP = styled.p`
 export const SelectedDate = styled.span`
   color: black;
   font-family: Roboto;
-  `
- 
+`;

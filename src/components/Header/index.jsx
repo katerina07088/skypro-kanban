@@ -5,7 +5,7 @@ import { routes } from "../../router/routers.js";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../Context/useUserContext.js";
 
-export const Header = ({ changeTheme, setChangeTheme }) => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUserContext();
 
@@ -13,9 +13,9 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
     setIsOpen(!isOpen);
   };
 
-  const onChangeTheme = () => {
-    setChangeTheme(changeTheme === "light" ? "dark" : "light");
-  };
+  // const onChangeTheme = () => {
+  //   setChangeTheme(changeTheme === "light" ? "dark" : "light");
+  // };
   return (
     <S.Header>
       <Container>
@@ -44,19 +44,18 @@ export const Header = ({ changeTheme, setChangeTheme }) => {
                 <S.PopUserSetName>{user.name}</S.PopUserSetName>
                 <S.PopUserSetMail>{user.email}</S.PopUserSetMail>
                 <S.PopUserSetTheme>
-                  <p>Темная тема</p>
+                  {/* <p>Темная тема</p>
                   <input
                     defaultChecked={changeTheme === "dark"}
                     onClick={onChangeTheme}
                     type="checkbox"
                     className="checkbox"
                     name="checkbox"
-                  />
+                  /> */}
                 </S.PopUserSetTheme>
                 <S.BtnExit>
-                    <Link to={routes.exit}> Выйти </Link>
-                  </S.BtnExit>
-               
+                  <Link to={routes.exit}> Выйти </Link>
+                </S.BtnExit>
               </S.HeaderPopUserSet>
             )}
           </S.HeaderNav>

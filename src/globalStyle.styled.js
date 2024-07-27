@@ -47,8 +47,8 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-  
-  @media screen and (max-width: 495px)  {
+
+  @media screen and (max-width: 495px) {
     width: 100%;
     padding: 0 16px;
   }
@@ -82,9 +82,6 @@ export const LightGray = css`
   background: ${({ theme }) => theme.lightGreyBg};
   color: ${({ theme }) => theme.lightGrayText};
 `;
-
-
-
 
 // export const Logo = css`
 // background-image: ${({theme}) => theme.logo};
@@ -136,7 +133,3 @@ export const Hover03 = css`
   }
 `;
 
-
-// export const TopicColor = css`
- 
-//  `;
