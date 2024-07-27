@@ -30,7 +30,7 @@ export const RegisterPage = () => {
 			return
 		}
     signUp(formData).then(() =>{
-		nav(routes.main)
+		nav(routes.login)
     })
   }
 		catch (error) {
@@ -65,7 +65,7 @@ export const RegisterPage = () => {
                 placeholder="Пароль"
               />
               {error && <p>{error}</p>}
-              <S.ModalBtnSignUpEnt id="SignUpEnter"> Зарегистрироваться
+              <S.ModalBtnSignUpEnt > Зарегистрироваться
               </S.ModalBtnSignUpEnt>
               <S.ModalFormGroup>
                 <p>

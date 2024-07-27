@@ -86,7 +86,7 @@ export const PopBrowse = () => {
                 type="text"
                 name="name"
                 value={editTaskData.title}
-                // readOnly={!isEdit}
+                readOnly={!isEdit}
               >
                 {editTaskData.title}{" "}
               </S.PopBrowseTtl>
@@ -241,7 +241,7 @@ export const PopBrowse = () => {
                 {error && <p> {error}</p>}
               </S.BtnBrowse>
             ) : (
-              <S.BtnBrowse className="pop-browse__btn-edit ">
+              <S.BtnBrowse >
                 <S.BntGroup>
                   <S.Btn onClick={addEditTask}> Сохранить </S.Btn>
                   <S.Btn onClick={handleEdit}> Отменить </S.Btn>
