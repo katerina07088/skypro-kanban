@@ -116,6 +116,7 @@ export const ModaBtnEnter = styled.button`
     justify-content: center;
     ${Hover01}
   }
+  background-color: ${({ disabled }) => (disabled ? "#94A6BE" : "")};
 `;
 export const ModalFormGroup = styled.div`
   text-align: center;

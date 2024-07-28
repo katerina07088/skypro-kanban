@@ -55,7 +55,7 @@ export const LoginPage = () => {
                 value={formData.login}
                 id="formlogin"
                 placeholder="Эл. почта"
-                $isError = {error}
+                $isError={error}
               />
               <S.ModalInput
                 onChange={(e) =>
@@ -66,12 +66,10 @@ export const LoginPage = () => {
                 value={formData.password}
                 id="formpassword"
                 placeholder="Пароль"
-                $isError = {error}
+                $isError={error}
               />
               {error && <S.ErroP> {error}</S.ErroP>}
-              <S.ModaBtnEnter type="submit" >
-                Войти
-              </S.ModaBtnEnter>
+              <S.ModaBtnEnter type="submit">Войти</S.ModaBtnEnter>
               <S.ModalFormGroup>
                 <p>Нужно зарегистрироваться?</p>
                 <Link to={routes.register}>Регистрируйтесь здесь</Link>

@@ -241,7 +241,7 @@ export const PopBrowse = () => {
                 {error && <p> {error}</p>}
               </S.BtnBrowse>
             ) : (
-              <S.BtnBrowse >
+              <S.BtnBrowse>
                 <S.BntGroup>
                   <S.Btn onClick={addEditTask}> Сохранить </S.Btn>
                   <S.Btn onClick={handleEdit}> Отменить </S.Btn>

@@ -14,7 +14,6 @@ export const Calendar = styled.div`
   }
 `;
 
-
 export const StyledDayPicker = styled(DayPicker)`
   margin: 0 0px;
   background-color: #ffffff;
@@ -49,11 +48,6 @@ export const StyledDayPicker = styled(DayPicker)`
   p {
     width: 100%;
   }
-  .rdp-day_today {
-    background: #eaeef6;
-    font-weight: normal;
-  }
-
   .rdp-day_selected {
     background: #94a6be;
   }
