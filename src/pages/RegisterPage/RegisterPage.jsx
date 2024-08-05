@@ -6,37 +6,42 @@ import { useState } from "react";
 import { signUp } from "../../api/user";
 
 export const RegisterPage = () => {
-  const nav = useNavigate()
+  const nav = useNavigate();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    login:"", 
-    password:"",
-    name:"",
-  })
+    login: "",
+    password: "",
+    name: "",
+  });
 
-	const handleRegister = async(e) => {
-    e.preventDefault()
-    try{
-    if (formData.login === '') {
-			setError('Введите почту')
-			return
-		}
-		if (formData.password === "") {
-					setError('Введите пароль')
-			return
-		}
-		if (formData.name === "") {
-					setError('Введите имя')
-			return
-		}
-    signUp(formData).then(() =>{
-		nav(routes.main)
-    })
-  }
-		catch (error) {
-			setError(error.message)
-		}
-  }
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      if (formData.login === "") {
+        setError(
+          "Введенные вами данные не корректны. Чтобы завершить регистрацию, введите данные корректно и повторите попытку."
+        );
+        return;
+      }
+      if (formData.password === "") {
+        setError(
+          "Введенные вами данные не корректны.Чтобы завершить регистрацию, заполните все поля в форме."
+        );
+        return;
+      }
+      if (formData.name === "") {
+        setError(
+          "Введенные вами данные не корректны.Чтобы завершить регистрацию, заполните все поля в форме."
+        );
+        return;
+      }
+      await signUp(formData).then(() => {
+        nav(routes.login);
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <Wrapper>
       <S.ContainerSignUp>
@@ -46,27 +51,38 @@ export const RegisterPage = () => {
               <h2>Регистрация</h2>
             </S.ModalTtl>
             <S.ModalFormLogin onSubmit={handleRegister} id="formLogUp">
-              <S.ModalInput onChange={ (e)=> setFormData({...formData, name: e.target.value})}
+              <S.ModalInput
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 type="text"
                 name="first-name"
                 id="first-name"
                 placeholder="Имя"
+                $isError={error}
               />
-              <S.ModalInput onChange={ (e)=> setFormData({...formData, login: e.target.value})}
+              <S.ModalInput
+                onChange={(e) =>
+                  setFormData({ ...formData, login: e.target.value })
+                }
                 type="text"
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
+                $isError={error}
               />
-              <S.ModalInput onChange={ (e)=> setFormData({...formData, password: e.target.value})}
+              <S.ModalInput
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
                 type="password"
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
+                $isError={error}
               />
-              {error && <p>{error}</p>}
-              <S.ModalBtnSignUpEnt id="SignUpEnter"> Зарегистрироваться
-              </S.ModalBtnSignUpEnt>
+              {error && <S.ErroP>{error}</S.ErroP>}
+              <S.ModalBtnSignUpEnt> Зарегистрироваться </S.ModalBtnSignUpEnt>
               <S.ModalFormGroup>
                 <p>
                   Уже есть аккаунт?<Link to={routes.login}>Войдите здесь</Link>
@@ -80,4 +96,3 @@ export const RegisterPage = () => {
     </Wrapper>
   );
 };
-

@@ -50,6 +50,18 @@ export const HeaderBtnMainNew = styled.button`
     color: #ffffff;
   }
   ${Hover01}
+
+  @media screen and (max-width: 495px) {
+    z-index: 3;
+    position: fixed;
+    left: 16px;
+    bottom: 30px;
+    top: auto;
+    width: calc(100vw - 32px);
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 0;
+  }
 `;
 export const HeaderUser = styled.a`
   height: 20px;

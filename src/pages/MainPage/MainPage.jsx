@@ -25,10 +25,6 @@ export const MainPage = ({ changeTheme, setChangeTheme }) => {
       .finally(() => {
         setIsLoading(false);
       });
-    //setIsLoading(true);
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    // }, 2000);
   }, [setTasks, user]);
 
   return (

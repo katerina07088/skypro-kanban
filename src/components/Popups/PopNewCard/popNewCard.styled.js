@@ -30,6 +30,11 @@ export const PopNewCardContainer = styled.div`
     padding: 0;
     justify-content: flex-start;
   }
+
+  @media screen and (max-width: 495px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const PopNewCardBlock = styled.div`
@@ -44,6 +49,10 @@ export const PopNewCardBlock = styled.div`
   position: relative;
   @media screen and (max-width: 660px) {
     border-radius: 0;
+  }
+
+  @media screen and (max-width: 495px) {
+    padding: 20px 16px 32px;
   }
 `;
 export const PopNewCardContent = styled.div`
@@ -84,6 +93,11 @@ export const PopNewCardForm = styled.form`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+  .pop-new-card__form {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
 `;
 export const FormNewBlock = styled.div`
   display: flex;
@@ -153,6 +167,10 @@ export const FormNewArea = styled.textarea`
     color: #94a6be;
     letter-spacing: -0.14px;
   }
+  @media screen and (max-width: 495px) {
+    max-width: 100%;
+    height: 34px;
+  }
 `;
 export const FormNewCreate = styled.button`
   width: 132px;
@@ -167,6 +185,10 @@ export const FormNewCreate = styled.button`
   color: #ffffff;
   float: right;
   ${Hover01}
+  @media screen and (max-width: 495px) {
+    width: 100%;
+    height: 40px;
+  }
 `;
 
 export const Categories = styled.div`
@@ -215,7 +237,7 @@ export const TopicPurple = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Purple};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 export const TopicOrange = styled.label`
@@ -231,7 +253,7 @@ export const TopicOrange = styled.label`
   line-height: 14.21px;
   white-space: nowrap;
   ${Orange};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 export const TopicGreen = styled.label`
@@ -247,7 +269,7 @@ export const TopicGreen = styled.label`
   line-height: 14px;
   white-space: nowrap;
   ${Green};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.4)};
 `;
 
 /* ${({ $topicColor }) => $topicColor === "Web Design" && Orange}
